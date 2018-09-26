@@ -10,8 +10,8 @@ Usage: `toUnicodeVariant(string, variant, flags)`
 | bold   |   b   | Bold text                        |𝐛𝐨𝐥𝐝  |
 | italic  |  if   | Italic text                       | 𝑖𝑡𝑎𝑙𝑖𝑐  |
 | bold italic   |   bi   | bold+italic text   | 𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄 |
-| script     |   c   | Hand writing style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
-| bold script  |  bc   | Bolder hand writing     | 𝓫𝓸𝓵𝓭 𝓼𝓬𝓻𝓲𝓹𝓽      |
+| script     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
+| bold script  |  bc   | Bolder handwriting     | 𝓫𝓸𝓵𝓭 𝓼𝓬𝓻𝓲𝓹𝓽      |
 | gothic  |   g   |Gothic (fraktur)            | 𝔤𝔬𝔱𝔥𝔦𝔠      |
 | gothic bold  |   gb   | Gothic in bold| 𝖌𝖔𝖙𝖍𝖎𝖈 𝖇𝖔𝖑𝖉        |
 | doublestruck |   d   | Outlined text        | 𝕕𝕠𝕦𝕓𝕝𝕖𝕤𝕥𝕣𝕦𝕔𝕜 |
@@ -33,7 +33,7 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 
 ### Example
 
-To show some underlined text with a standard alert box :
+To show some underlined text in a standard `alert()` box :
 
 `alert('Really need to alert some '+toUnicodeVariant('underlined', 'bold sans', 'underline')+' text');`
 
