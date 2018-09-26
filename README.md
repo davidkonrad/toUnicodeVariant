@@ -49,4 +49,5 @@ Would look like this in a browser (here Chrome on Ubuntu) :
 
 Raise an issue if you discover major flaws (or minor flaws as well). You are also more than welcome to suggest other cool unicode variants this function could support.
 
+This work was triggered by the dare need of underlined text in browser dialogs.  The Stack Overflow question [https://stackoverflow.com/questions/17470817/format-the-text-in-javascript-alert-box](https://stackoverflow.com/q/17470817/1407478) pointed me to the right direction, even though none of the answers were actual useable. 
 
