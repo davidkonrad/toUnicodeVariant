@@ -34,7 +34,7 @@
 	  i: [0x1d434, 0x00030],
 	  bi: [0x1d468, 0x00030],
 	  c: [0x1d49c, 0x00030],
-	  bs: [0x1d4d0, 0x00030],
+	  bc: [0x1d4d0, 0x00030],
 	  g: [0x1d504, 0x00030],
 	  d: [0x1d538, 0x1d7d8],
 	  bg: [0x1d56c, 0x00030],
@@ -56,12 +56,13 @@
 		'script': 'c',
 		'bold script': 'bc',
 		'gothic': 'g',
+		'gothic bold': 'bg',
 		'doublestruck': 'd',
-		'bold fraktur': 'bf',
 		'sans': 's',
 		'bold sans' : 'bs',
 		'italic sans': 'is',
 		'bold italic sans': 'bis',
+		'parenthesis': 'p',
 		'circled': 'o',
 		'fullwidth': 'w'
 	}
@@ -122,9 +123,6 @@
 	var type = getType(variant);
 	var underline = getFlag('underline', flags);
 	var strike = getFlag('strike', flags);
-	var italic = getFlag('italic', flags);
-	var bold = getFlag('bold', flags);
-
   var result = '';
 
   for (var k of str) {
