@@ -1,6 +1,6 @@
 # toUnicodeVariant
 
-Javascript function to convert a string into different kind of unicode variants.  Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs.
+Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants.  Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs.
 
 Usage: `toUnicodeVariant(string, variant, flags)`
 
