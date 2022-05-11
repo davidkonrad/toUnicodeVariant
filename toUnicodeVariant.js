@@ -17,23 +17,27 @@
  * m: monospace
  * b: bold
  * i: italic
- * c: script
+ * c: script (Mathematical Alphanumeric Symbols)
  * g: gothic / fraktur
  * d: double-struck
  * s: sans-serif
- * o: circled text 
+ * o: circled text
  * p: parenthesized latin letters
  * w: fullwidth
  */
 
 ;function toUnicodeVariant(str, variant, flags) {
-
+//𝓼 𝓈 𝑠
 	const offsets = {
 	  m: [0x1d670, 0x1d7f6],
 	  b: [0x1d400, 0x1d7ce],
 	  i: [0x1d434, 0x00030],
 	  bi: [0x1d468, 0x00030],
-	  c: [0x1d49c, 0x00030],
+		//1D49C
+		//0x1D49C	
+		//c: [0x0001D49C, 0x00030],  //mathematical script small/capital starts with lowercase
+		c: [0x0001D49C, 0x00030],  //mathematical script small/capital starts with lowercase
+		
 	  bc: [0x1d4d0, 0x00030],
 	  g: [0x1d504, 0x00030],
 	  d: [0x1d538, 0x1d7d8],
@@ -42,7 +46,8 @@
 	  bs: [0x1d5d4, 0x1d7ec],
 	  is: [0x1d608, 0x00030],
 	  bis: [0x1d63c, 0x00030],
-		o: [0x24B6, 0x2460], 
+		o: [0x24B6, 0x2460],
+		on: [0x0001F150, 0x2460],  
 		p: [0x249C, 0x2474], 
 		w: [0xff21, 0xff10],
 		u: [0x2090, 0xff10]
@@ -64,6 +69,7 @@
 		'bold italic sans': 'bis',
 		'parenthesis': 'p',
 		'circled': 'o',
+		'circled negative': 'on',
 		'fullwidth': 'w'
 	}
 
@@ -104,6 +110,7 @@
 			'8': 0x2467,
 			'9': 0x2468,
 		},
+		on: {},
 		p: {},
 		w: {}
 	}
@@ -114,6 +121,10 @@
 	//support for full width latin letters small cases 
 	for (var i = 97; i <= 122; i++) {
 		special.w[String.fromCharCode(i)] = 0xff41 + (i-97)
+	}
+	//support for circled negative letters small cases 
+	for (var i = 97; i <= 122; i++) {
+		special.on[String.fromCharCode(i)] = 0x0001F150 + (i-97)
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -136,18 +147,18 @@
 
   for (var k of str) {
     let index
-    let c = k
+    let c = k 
     if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
     if (type && (index = chars.indexOf(c)) > -1) {
-      result += String.fromCodePoint(index + offsets[type][0])
+      result += String.fromCodePoint(index + offsets[type][0]) 
     } else if (type && (index = numbers.indexOf(c)) > -1) {
-      result += String.fromCodePoint(index + offsets[type][1])
+      result += String.fromCodePoint(index + offsets[type][1]) 
     } else {
-      result += c
+      result += c 
     }
     if (underline) result += '\u0332' // add combining underline
     if (strike) result += '\u0336' // add combining strike
   }
-	return result	
+	return result
 }
 
