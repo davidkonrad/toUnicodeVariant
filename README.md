@@ -40,7 +40,7 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 
 #### Expected output
 There are really difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
-headache. Best browser for supporting both vaiants and flags are defently Firefox.
+headache. Best browser for supporting both variants and flags are defently Firefox.
 
 ### Example
 
@@ -51,6 +51,8 @@ To show some underlined text in a standard `alert()` box :
 Would look like this in a browser (here Chrome on Ubuntu) :
 
 ![alt text](media/alert.png)
+
+Note: Most browsers have stopped supporting unicode in their native dialogs.
 
 ### Notes
 
