@@ -23,21 +23,18 @@
  * s: sans-serif
  * o: circled text
  * p: parenthesized latin letters
+ * q: squared text
  * w: fullwidth
  */
 
 ;function toUnicodeVariant(str, variant, flags) {
-//𝓼 𝓈 𝑠
+
 	const offsets = {
 	  m: [0x1d670, 0x1d7f6],
 	  b: [0x1d400, 0x1d7ce],
 	  i: [0x1d434, 0x00030],
 	  bi: [0x1d468, 0x00030],
-		//1D49C
-		//0x1D49C	
-		//c: [0x0001D49C, 0x00030],  //mathematical script small/capital starts with lowercase
-		c: [0x0001D49C, 0x00030],  //mathematical script small/capital starts with lowercase
-		
+		c: [0x0001d49c, 0x00030],
 	  bc: [0x1d4d0, 0x00030],
 	  g: [0x1d504, 0x00030],
 	  d: [0x1d538, 0x1d7d8],
@@ -47,8 +44,10 @@
 	  is: [0x1d608, 0x00030],
 	  bis: [0x1d63c, 0x00030],
 		o: [0x24B6, 0x2460],
-		on: [0x0001F150, 0x2460],  
-		p: [0x249C, 0x2474], 
+		on: [0x0001f150, 0x2460],
+		p: [0x249c, 0x2474],
+		q: [0x1f130, 0x00030],
+		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
 		u: [0x2090, 0xff10]
 	}
@@ -70,11 +69,13 @@
 		'parenthesis': 'p',
 		'circled': 'o',
 		'circled negative': 'on',
+		'squared': 'q',
+		'squared negative': 'qn',
 		'fullwidth': 'w'
 	}
 
 	// special characters (absolute values)
-	var special = {
+	const special = {
 	  m: {
 	    ' ': 0x2000,
 	    '-': 0x2013
@@ -112,38 +113,38 @@
 		},
 		on: {},
 		p: {},
+		q: {},
+		qn: {},
 		w: {}
 	}
 	//support for parenthesized latin letters small cases 
-	for (var i = 97; i <= 122; i++) {
-		special.p[String.fromCharCode(i)] = 0x249C + (i-97)
-	}
 	//support for full width latin letters small cases 
-	for (var i = 97; i <= 122; i++) {
-		special.w[String.fromCharCode(i)] = 0xff41 + (i-97)
-	}
 	//support for circled negative letters small cases 
-	for (var i = 97; i <= 122; i++) {
-		special.on[String.fromCharCode(i)] = 0x0001F150 + (i-97)
-	}
+	//support for squared letters small cases 
+	//support for squared letters negative small cases 
+	;['p', 'w', 'on', 'q', 'qn'].forEach(t => {
+		for (var i = 97; i <= 122; i++) {
+			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
+		}
+	})		
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	const numbers = '0123456789';
 
-	var getType = function(variant) {
+	const getType = function(variant) {
 		if (variantOffsets[variant]) return variantOffsets[variant]
 		if (offsets[variant]) return variant;
 		return 'm'; //monospace as default
 	}
-	var getFlag = function(flag, flags) {
+	const getFlag = function(flag, flags) {
 		if (!flags) return false
 		return flags.split(',').indexOf(flag)>-1
 	}
 
-	var type = getType(variant);
-	var underline = getFlag('underline', flags);
-	var strike = getFlag('strike', flags);
-  var result = '';
+	const type = getType(variant)
+	const underline = getFlag('underline', flags)
+	const strike = getFlag('strike', flags)
+  let result = ''
 
   for (var k of str) {
     let index
