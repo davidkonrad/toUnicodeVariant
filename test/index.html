@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>toUnicodeVariant - test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<script src="../toUnicodeVariant.js"></script>
+<style>
+body {
+	padding: 1rem;
+}
+</style>
+</head>
+<body>
+
+<h1>toUnicodeVariant</h1>
+<table id="table"></table>
+
+<script>
+const variantOffsets = {
+	'monospace': 'm',
+	'bold' : 'b',
+	'italic' : 'i',
+	'bold italic' : 'bi',
+	'script': 'c',
+	'bold script': 'bc',
+	'gothic': 'g',
+	'gothic bold': 'bg',
+	'doublestruck': 'd',
+	'sans': 's',
+	'bold sans' : 'bs',
+	'italic sans': 'is',
+	'bold italic sans': 'bis',
+	'parenthesis': 'p',
+	'circled': 'o',
+	'fullwidth': 'w'
+}
+
+const table = document.querySelector('#table')
+
+const addRow = function(td1, td2) {
+	const tr = table.insertRow()
+	let td = tr.insertCell()
+	td.innerText = td1
+	td = tr.insertCell()
+	td.innerText = td2
+}
+
+for (v in variantOffsets) {
+	addRow(v, toUnicodeVariant('The quick brown fox jumps over the lazy dog', variantOffsets[v]))
+	addRow(v + ' underline', toUnicodeVariant('The quick brown fox jumps over the lazy dog', variantOffsets[v], 'underline'))
+	addRow(v + ' strike', toUnicodeVariant('The quick brown fox jumps over the lazy dog', variantOffsets[v], 'strike'))
+}
+
+</script>
+
+</body>
+
