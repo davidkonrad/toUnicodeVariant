@@ -35,8 +35,8 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 | paranthesis |   strike   | 	⒜̶⒝̶⒞̶⒟̶⒠̶⒡̶⒢̶ |
 
 ### Test
-`test/index.html`, a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:
-<img src="media/variants-chrome-100.png" align="left">
+`test/index.html`, a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
+<img src="media/variants-chrome-100.png" align="left"><br>
 There are really difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
 headache. Best browser for supporting both vaiants and flags are defently Firefox.
 
