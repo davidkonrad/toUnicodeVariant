@@ -22,7 +22,7 @@ body {
 
 <script>
 
-(function() {
+(function(document) {
 	const variantOffsets = {
 		'monospace': 'm',
 		'bold' : 'b',
@@ -59,7 +59,8 @@ body {
 	const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789'
 
 	for (v in variantOffsets) {
-		addRow(vTable, v, toUnicodeVariant(str, variantOffsets[v]))
+		addRow(vTable, v, toUnicodeVariant(v, variantOffsets[v]))
+		addRow(fTable, v, toUnicodeVariant(str, variantOffsets[v]))
 		addRow(fTable, v + ' underline', toUnicodeVariant(str, variantOffsets[v], 'underline'))
 		addRow(fTable, v + ' strike', toUnicodeVariant(str, variantOffsets[v], 'strike'))
 	}
@@ -68,4 +69,5 @@ body {
 </script>
 
 </body>
+</html>
 
