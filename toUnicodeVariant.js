@@ -1,5 +1,5 @@
 /**
- * (c) David Konrad 2018
+ * (c) David Konrad 2018-
  * MIT License
  *
  * Javascript function to convert plain text to unicode variants
@@ -27,22 +27,22 @@
  * w: fullwidth
  */
 
-;function toUnicodeVariant(str, variant, flags) {
+function toUnicodeVariant(str, variant, flags) {
 
 	const offsets = {
-	  m: [0x1d670, 0x1d7f6],
-	  b: [0x1d400, 0x1d7ce],
-	  i: [0x1d434, 0x00030],
-	  bi: [0x1d468, 0x00030],
+		m: [0x1d670, 0x1d7f6],
+		b: [0x1d400, 0x1d7ce],
+		i: [0x1d434, 0x00030],
+		bi: [0x1d468, 0x00030],
 		c: [0x0001d49c, 0x00030],
-	  bc: [0x1d4d0, 0x00030],
-	  g: [0x1d504, 0x00030],
-	  d: [0x1d538, 0x1d7d8],
-	  bg: [0x1d56c, 0x00030],
-	  s: [0x1d5a0, 0x1d7e2],
-	  bs: [0x1d5d4, 0x1d7ec],
-	  is: [0x1d608, 0x00030],
-	  bis: [0x1d63c, 0x00030],
+		bc: [0x1d4d0, 0x00030],
+		g: [0x1d504, 0x00030],
+		d: [0x1d538, 0x1d7d8],
+		bg: [0x1d56c, 0x00030],
+		s: [0x1d5a0, 0x1d7e2],
+		bs: [0x1d5d4, 0x1d7ec],
+		is: [0x1d608, 0x00030],
+		bis: [0x1d63c, 0x00030],
 		o: [0x24B6, 0x2460],
 		on: [0x0001f150, 0x2460],
 		p: [0x249c, 0x2474],
@@ -76,20 +76,20 @@
 
 	// special characters (absolute values)
 	const special = {
-	  m: {
-	    ' ': 0x2000,
-	    '-': 0x2013
-	  },
-	  i: {
-	    'h': 0x210e
-	  },
-	  g: {
-	    'C': 0x212d,
-	    'H': 0x210c,
-	    'I': 0x2111,
-	    'R': 0x211c,
-      'Z': 0x2128
-	  },
+		m: {
+			' ': 0x2000,
+			'-': 0x2013
+		},
+		i: {
+			'h': 0x210e
+		},
+		g: {
+			'C': 0x212d,
+			'H': 0x210c,
+			'I': 0x2111,
+			'R': 0x211c,
+			'Z': 0x2128
+		},
     d: {
       'C': 0x2102,
       'H': 0x210D,
@@ -128,13 +128,13 @@
 		}
 	})		
 
-	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-	const numbers = '0123456789';
+	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+	const numbers = '0123456789'
 
 	const getType = function(variant) {
 		if (variantOffsets[variant]) return variantOffsets[variant]
-		if (offsets[variant]) return variant;
-		return 'm'; //monospace as default
+		if (offsets[variant]) return variant
+		return 'm' //monospace as default
 	}
 	const getFlag = function(flag, flags) {
 		if (!flags) return false
