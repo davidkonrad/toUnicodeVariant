@@ -20,6 +20,9 @@ Usage: `toUnicodeVariant(string, variant, flags)`
 | italic 𝗌𝖺𝗇𝗌   |  is   | Italic sans-serif  | 𝘪𝘵𝘢𝘭𝘪𝘤 𝘴𝘢𝘯𝘴 |
 | bold italic sans  |  bis   | Bold italic sans-serif  | 𝙗𝙤𝙡𝙙 𝙞𝙩𝙖𝙡𝙞𝙘 𝙨𝙖𝙣𝙨 |
 | circled  |  o   | Letters within circles   | ⓒⓘⓡⓒⓛⓔⓓ |
+| circled  |  on   | -- negative  | 	🅒🅘🅡🅒🅛🅔🅓 |
+| squared  |  q   | Letters within squares   | 🅂🅀🅄🄰🅁🄴🄳 |
+| circled  |  qn   | -- negative  | 🆂🆀🆄🅰🆁🅴🅳
 | paranthesis   |  p   | Letters within paranthesis  | ⒫⒜⒭⒠⒩⒯⒣⒠⒮⒤ |
 | fullwidth  | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 
@@ -29,7 +32,13 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 |Variant     | Flags               | Example           |
 |:--------- |:-----|:---------------------------- |
 | gothic |   underline   | 𝔤̲𝔬̲𝔱̲𝔥̲𝔦̲𝔠̲|
-| paranthesis |   strike   | 𝚙̶𝚊̶𝚛̶𝚊̶𝚗̶𝚝̶𝚑̶𝚎̶𝚜̶𝚒̶𝚜̶ |
+| paranthesis |   strike   | 	⒜̶⒝̶⒞̶⒟̶⒠̶⒡̶⒢̶ |
+
+### Test
+`test/index.html`, a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:
+![alt text](media/variants-chrome-100.png)
+There are really difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
+headache. Best browser for supporting both vaiants and flags are defently Firefox.
 
 ### Example
 
