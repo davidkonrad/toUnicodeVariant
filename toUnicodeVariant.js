@@ -146,9 +146,8 @@ function toUnicodeVariant(str, variant, flags) {
 	const strike = getFlag('strike', flags)
   let result = ''
 
-  for (var k of str) {
+  for (let c of str) {
     let index
-    let c = k 
     if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
     if (type && (index = chars.indexOf(c)) > -1) {
       result += String.fromCodePoint(index + offsets[type][0]) 
