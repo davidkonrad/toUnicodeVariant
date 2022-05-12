@@ -45,9 +45,6 @@ body {
 		'fullwidth': 'w'
 	}
 
-	const vTable = document.querySelector('#table-variants')
-	const fTable = document.querySelector('#table-flags')
-
 	const addRow = function(t, t1, t2) {
 		const tr = t.insertRow()
 		let td = tr.insertCell()
@@ -56,9 +53,11 @@ body {
 		td.innerText = t2
 	}
 
+	const vTable = document.querySelector('#table-variants')
+	const fTable = document.querySelector('#table-flags')
 	const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789'
 
-	for (v in variantOffsets) {
+	for (const v in variantOffsets) {
 		addRow(vTable, v, toUnicodeVariant(v, variantOffsets[v]))
 		addRow(fTable, v, toUnicodeVariant(str, variantOffsets[v]))
 		addRow(fTable, v + ' underline', toUnicodeVariant(str, variantOffsets[v], 'underline'))
