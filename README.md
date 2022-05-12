@@ -35,7 +35,7 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 | doublestruck |   strike   | 𝔸̶𝔹̶ℂ̶𝔻̶𝔼̶𝔽̶𝔾̶ℍ̶𝕀̶𝕁̶𝕂̶𝕃̶ |
 
 ### Test
-`test/index.html`, a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
+[test/index.html](test/index.html), a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
 <img src="media/variants-chrome-100.png">
 
 #### Expected output
