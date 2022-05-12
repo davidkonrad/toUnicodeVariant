@@ -20,9 +20,9 @@ Usage: `toUnicodeVariant(string, variant, flags)`
 | italic 𝗌𝖺𝗇𝗌   |  is   | Italic sans-serif  | 𝘪𝘵𝘢𝘭𝘪𝘤 𝘴𝘢𝘯𝘴 |
 | bold italic sans  |  bis   | Bold italic sans-serif  | 𝙗𝙤𝙡𝙙 𝙞𝙩𝙖𝙡𝙞𝙘 𝙨𝙖𝙣𝙨 |
 | circled  |  o   | Letters within circles   | ⓒⓘⓡⓒⓛⓔⓓ |
-| circled  |  on   | -- negative  | 	🅒🅘🅡🅒🅛🅔🅓 |
+| circled negative |  on   | -- negative  | 	🅒🅘🅡🅒🅛🅔🅓 |
 | squared  |  q   | Letters within squares   | 🅂🅀🅄🄰🅁🄴🄳 |
-| circled  |  qn   | -- negative  | 🆂🆀🆄🅰🆁🅴🅳
+| squared negative  |  qn   | -- negative  | 🆂🆀🆄🅰🆁🅴🅳
 | paranthesis   |  p   | Letters within paranthesis  | ⒫⒜⒭⒠⒩⒯⒣⒠⒮⒤ |
 | fullwidth  | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 
