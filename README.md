@@ -8,7 +8,7 @@ Usage: `toUnicodeVariant(string, variant, flags)`
 |:--------- |:-----:|:----------------------------- |:----------------- |
 | monospace |   m   | Monospace      | 𝚖𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎 |
 | bold   |   b   | Bold text                        |𝐛𝐨𝐥𝐝  |
-| italic  |  if   | Italic text                       | 𝑖𝑡𝑎𝑙𝑖𝑐  |
+| italic  |  i  | Italic text                       | 𝑖𝑡𝑎𝑙𝑖𝑐  |
 | bold italic   |   bi   | bold+italic text   | 𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄 |
 | script     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
 | bold script  |  bc   | Bolder handwriting     | 𝓫𝓸𝓵𝓭 𝓼𝓬𝓻𝓲𝓹𝓽      |
