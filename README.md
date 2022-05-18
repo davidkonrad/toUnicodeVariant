@@ -1,13 +1,17 @@
 # toUnicodeVariant
 
-Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants.  Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs.
+Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants. 
 
-```javascript
-//browser
+#### browser
+```html
 <script src="path/to/toUnicodeVariant.js"></script>
-//node
+```
+#### nodejs
+```javascript
 const toUnicodeVariant = require('path/to/toUnicodeVariant.js') 
-...
+```
+#### usage
+```javascript
 toUnicodeVariant(string, variant, flags)
 ```
 
@@ -54,7 +58,7 @@ headache. Best browser for supporting both variants and flags are defently Firef
 
 ### Example
 
-To show some underlined text in a standard `alert()` box :
+Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs. To show some underlined text in a standard `alert()` box :
 
 `alert('Really need to alert some '+toUnicodeVariant('underlined', 'bold sans', 'underline')+' text');`
 
@@ -62,7 +66,7 @@ Would look like this in a browser (here Chrome on Ubuntu) :
 
 ![alt text](media/alert.png)
 
-Note: Most browsers have stopped supporting unicode in their native dialogs.
+Note: Most browsers have stopped supporting unicode in their native dialogs!
 
 ### Notes
 
