@@ -2,7 +2,12 @@
 
 Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants.  Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs.
 
-Usage: `toUnicodeVariant(string, variant, flags)`
+```javascript
+<script src="path/to/toUnicodeVariant.js"></script> //browser
+const toUnicodeVariant = require('path/to/toUnicodeVariant.js') //node
+...
+toUnicodeVariant(string, variant, flags)
+```
 
 |Variant     | Alias | Description                   | Example           |
 |:--------- |:-----:|:----------------------------- |:----------------- |
@@ -35,11 +40,15 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 | doublestruck |   strike   | 𝔸̶𝔹̶ℂ̶𝔻̶𝔼̶𝔽̶𝔾̶ℍ̶𝕀̶𝕁̶𝕂̶𝕃̶ |
 
 ### Test
-[test/index.html](test/index.html), a HTML-page with all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
+Browser: `test/browser.html`
+Node: `test$ node node.js`
+
+The tests echoes out all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
 <img src="media/variants-chrome-100.png">
+Node: [test/node.js](test/node.js)
 
 #### Expected output
-There are really difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
+There are difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
 headache. Best browser for supporting both variants and flags are defently Firefox.
 
 ### Example
