@@ -54,7 +54,7 @@ toUnicodeVariant('gothic', 'g', 'underline')
 Browser: `test/browser.html`
 Node: `test$ node node.js`
 
-Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
+Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this :<br><br>
 <img src="media/variants-chrome-100.png">
 
 #### Expected output
@@ -64,10 +64,10 @@ headache. Best browser for supporting both variants and flags are defently Firef
 ### Example
 
 Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs. To show some underlined text in a standard `alert()` box :
-
-`alert('Really need to alert some '+toUnicodeVariant('underlined', 'bold sans', 'underline')+' text');`
-
-Would look like this in a browser (here Chrome on Ubuntu) :
+```javascript
+alert('Really need to alert some '+toUnicodeVariant('underlined', 'bold sans', 'underline')+' text');
+```
+Would look like this in a browser (here Chrome on older Ubuntu 16.04) :
 
 ![alt text](media/alert.png)
 
