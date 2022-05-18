@@ -3,8 +3,10 @@
 Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants.  Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs.
 
 ```javascript
-<script src="path/to/toUnicodeVariant.js"></script> //browser
-const toUnicodeVariant = require('path/to/toUnicodeVariant.js') //node
+//browser
+<script src="path/to/toUnicodeVariant.js"></script>
+//node
+const toUnicodeVariant = require('path/to/toUnicodeVariant.js') 
 ...
 toUnicodeVariant(string, variant, flags)
 ```
@@ -43,12 +45,11 @@ Besides that, the text can be enriched with underline or strike (or both) throug
 Browser: `test/browser.html`
 Node: `test$ node node.js`
 
-The tests echoes out all variant and flag combinations exposed. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
+Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this:<br>
 <img src="media/variants-chrome-100.png">
-Node: [test/node.js](test/node.js)
 
 #### Expected output
-There are difference between browsers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
+There are really difference between browsers/readers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
 headache. Best browser for supporting both variants and flags are defently Firefox.
 
 ### Example
