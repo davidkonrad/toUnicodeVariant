@@ -13,6 +13,8 @@ const toUnicodeVariant = require('path/to/toUnicodeVariant.js')
 #### usage
 ```javascript
 toUnicodeVariant(string, variant, flags)
+...
+toUnicodeVariant('monospace', 'm') //like first row below 
 ```
 
 |Variant     | Alias | Description                   | Example           |
@@ -38,8 +40,11 @@ toUnicodeVariant(string, variant, flags)
 | fullwidth  | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 
 
-Besides that, the text can be enriched with underline or strike (or both) through the flags param:
+Besides that, the text can be enriched with underline or strike (or both) through the flags param :
 
+```javascript
+toUnicodeVariant('gothic', 'g', 'underline')
+```
 |Variant     | Flags               | Example           |
 |:--------- |:-----|:---------------------------- |
 | gothic |   underline   | 𝔤̲𝔬̲𝔱̲𝔥̲𝔦̲𝔠̲|
