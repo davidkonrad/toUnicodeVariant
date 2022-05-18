@@ -6,6 +6,7 @@
 <title>toUnicodeVariant - test</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <script src="../toUnicodeVariant.js"></script>
+<script src="test.js"></script>
 <style>
 body {
 	padding: 1rem;
@@ -23,46 +24,23 @@ body {
 <script>
 
 (function(document) {
-	const variantOffsets = {
-		'monospace': 'm',
-		'bold' : 'b',
-		'italic' : 'i',
-		'bold italic' : 'bi',
-		'script': 'c',
-		'bold script': 'bc',
-		'gothic': 'g',
-		'gothic bold': 'bg',
-		'doublestruck': 'd',
-		'sans': 's',
-		'bold sans' : 'bs',
-		'italic sans': 'is',
-		'bold italic sans': 'bis',
-		'parenthesis': 'p',
-		'squared': 'q',
-		'squared negative': 'qn',
-		'circled': 'o',
-		'circled negative': 'on',
-		'fullwidth': 'w'
-	}
 
 	const addRow = function(t, t1, t2) {
 		const tr = t.insertRow()
-		let td = tr.insertCell()
-		td.innerText = t1
-		td = tr.insertCell()
-		td.innerText = t2
+		tr.insertCell().innerText = t1
+		tr.insertCell().innerText = t2
 	}
 
 	const vTable = document.querySelector('#table-variants')
 	const fTable = document.querySelector('#table-flags')
-	const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789'
 
-	for (const v in variantOffsets) {
-		addRow(vTable, v, toUnicodeVariant(v, variantOffsets[v]))
-		addRow(fTable, v, toUnicodeVariant(str, variantOffsets[v]))
-		addRow(fTable, v + ' underline', toUnicodeVariant(str, variantOffsets[v], 'underline'))
-		addRow(fTable, v + ' strike', toUnicodeVariant(str, variantOffsets[v], 'strike'))
+	for (const v in Test.variantOffsets) {
+		addRow(vTable, v, toUnicodeVariant(v, Test.variantOffsets[v]))
+		addRow(fTable, v, toUnicodeVariant(Test.str, Test.variantOffsets[v]))
+		addRow(fTable, v + ' underline', toUnicodeVariant(Test.str, Test.variantOffsets[v], 'underline'))
+		addRow(fTable, v + ' strike', toUnicodeVariant(Test.str, Test.variantOffsets[v], 'strike'))
 	}
+
 })(document);
 
 </script>
