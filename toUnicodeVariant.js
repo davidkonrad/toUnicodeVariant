@@ -138,12 +138,12 @@ function toUnicodeVariant(str, variant, flags) {
 	}
 	const getFlag = function(flag, flags) {
 		if (!flags) return false
-		return flags.split(',').indexOf(flag)>-1
+		return flag.split('|').some(f => flags.split(',').indexOf(f) > -1)
 	}
 
 	const type = getType(variant)
-	const underline = getFlag('underline', flags)
-	const strike = getFlag('strike', flags)
+	const underline = getFlag('underline|u', flags)
+	const strike = getFlag('strike|s', flags)
   let result = ''
 
   for (let c of str) {
