@@ -81,25 +81,3 @@ Those tests show all variants and their coverage a-Z, along with flags. For refe
 There are really difference between browsers/readers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
 headache. Best browser for supporting both variants and flags are defently Firefox.
 
-### Example
-
-Originally created to show some "cool" styled text in the browsers built-in `alert()`, `prompt()` and `confirm()` dialogs. To show some underlined text in a standard `alert()` box :
-```javascript
-alert('Really need to alert some '+toUnicodeVariant('underlined', 'bold sans', 'underline')+' text');
-```
-Would look like this in a browser (here Chrome on older Ubuntu 16.04) :
-
-![alt text](media/alert.png)
-
-Note: Most browsers have stopped supporting unicode in their native dialogs!
-
-### Notes
-
-* There is no support for special chars such as `&`, `%` and so on (yet, could be implemented where unicode support it)
-* Not all combinations of variants and flags is guaranteed to work. It is try and error. 
-* Some variants does not support numbers (or I have missed them) some variants does not support capital or small letters (fixed for some)
-
-Raise an issue if you discover major flaws (or minor flaws as well). You are also more than welcome to suggest other cool unicode variants this function could support.
-
-This work was triggered by the dare need of underlined text in browser dialogs.  The Stack Overflow question [https://stackoverflow.com/questions/17470817/format-the-text-in-javascript-alert-box](https://stackoverflow.com/q/17470817/1407478) pointed me to the right direction, even though none of the answers were actual useable. 
-
