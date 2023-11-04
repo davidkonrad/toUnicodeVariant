@@ -76,3 +76,7 @@ Node: `test$ node node.js`
 
 Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
 <img src="media/variants-chrome-112.png">
+
+### Playground
+
+For now, visit https://detfrieord.dk/tekst-til-unicode (in danish, sorry)
