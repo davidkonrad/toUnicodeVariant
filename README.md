@@ -23,7 +23,7 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | bold   |   b   | Bold text                        |𝐛𝐨𝐥𝐝  |
 | italic  |  i  | Italic text                       | 𝑖𝑡𝑎𝑙𝑖𝑐  |
 | bold italic   |   bi   | bold+italic text   | 𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄 |
-| script     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
+| script<sup>1</sup>     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
 | bold script  |  bc   | Bolder handwriting     | 𝓫𝓸𝓵𝓭 𝓼𝓬𝓻𝓲𝓹𝓽      |
 | gothic  |   g   |Gothic (fraktur)            | 𝔤𝔬𝔱𝔥𝔦𝔠      |
 | gothic bold  |   bg   | Gothic in bold| 𝖌𝖔𝖙𝖍𝖎𝖈 𝖇𝖔𝖑𝖉        |
@@ -37,7 +37,8 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | squared  |  q   | Letters within squares   | 🅂🅀🅄🄰🅁🄴🄳 |
 | squared negative  |  qn   | -- negative  | 🆂🆀🆄🅰🆁🅴🅳
 | paranthesis   |  p   | Letters within paranthesis  | ⒫⒜⒭⒠⒩⒯⒣⒠⒮⒤ |
-| fullwidth  | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
+| fullwidth | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
+| flags | f | Regional codes | 🇩🇰 🇺 🇳 🇮 🇨 🇴 🇩 🇪 |
 
 
 Besides that, the text can be enriched with underline or strike (or both) through the flags param :
@@ -50,6 +51,14 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | gothic |   underline   | 𝔤̲𝔬̲𝔱̲𝔥̲𝔦̲𝔠̲|
 | doublestruck |   strike   | 𝔸̶𝔹̶ℂ̶𝔻̶𝔼̶𝔽̶𝔾̶ℍ̶𝕀̶𝕁̶𝕂̶𝕃̶ |
 | sans |   u,s   | 𝟢̶̲𝟣̶̲𝟤̶̲𝟥̶̲𝟦̶̲𝟧̶̲𝟨̶̲𝟩̶̲ |
+
+### Script, gothic ..?
+Must admit this "variant" concept and their names are a little exotic. In fact they are just collections of varionus kind of mathematical symbols described in details here https://www.unicode.org/charts/PDF/U1D400.pdf.
+
+Most of the variants supports A-Z, a-z. Some variants support nummbers as well. The fullwidth variant even support all the basicallalso supports all  lot of special chars 
+
+most om them are covered [here](https://www.unicode.org/charts/PDF/U1D400.pdf)  [PDF]. wrappers for  combinations bit exotic. are my own invention for convenience. In fact is a collection 
+
 
 ### Test
 Browser: `test/browser.html`
