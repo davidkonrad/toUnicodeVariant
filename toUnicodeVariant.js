@@ -86,6 +86,10 @@ function toUnicodeVariant(str, variant, flags) {
 		i: {
 			'h': 0x210e
 		},
+		c: {
+			'B': 0x1D4D1, 'E': 0x1D4D4, 'F': 0x1D4D5, 'H': 0x1D4D7, 'I': 0x1D4D8, 'L': 0x1D4DB, 'M': 0x1D4DC, 'R': 0x1D4E1, 
+			'e': 0x1D4EE, 'g': 0x1D4F0,	'o': 0x1D4F8
+		},
 		g: {
 			'C': 0x212d, 'H': 0x210c, 'I': 0x2111, 'R': 0x211c, 'Z': 0x2128
 		},
@@ -98,7 +102,7 @@ function toUnicodeVariant(str, variant, flags) {
 		on: {
 			'0': 0x1F10C
 		},
-		p: {}, c: {},	q: {}, qn: {},
+		p: {}, q: {}, qn: {},
 		w: {
 			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06, "'": 0xFF07, "(": 0xFF08, ")": 0xFF09, 
 			"*": 0xFF0A, "+": 0xFF0B, ",": 0xFF0C, "-": 0xFF0D, ".": 0xFF0E, "/": 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
