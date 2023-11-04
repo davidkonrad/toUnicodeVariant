@@ -53,14 +53,14 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | sans |   u,s   | 𝟢̶̲𝟣̶̲𝟤̶̲𝟥̶̲𝟦̶̲𝟧̶̲𝟨̶̲𝟩̶̲ |
 
 ### Script, gothic ..?
-Must admit that this "variant" concept and their names are a little exotic. In fact they are just collections of varionus kind of mathematical symbols described in details here https://www.unicode.org/charts/PDF/U1D400.pdf.
+The "variant" concept and their naming are a little exotic. In fact they are just collections of various kind of mathematical symbols described in details here  https://www.unicode.org/charts/PDF/U1D400.pdf.
 
-Almost all of the variants supports A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table! So you can safely use that to render plain text in general. 
+Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table. So you can safely use that variant to render any kind plain text in general. 
 
 
 ### 🇫 🇱 🇦 🇬 🇸
 
-```flags``` or ```f``` are a special variant that need to be treated different. It is actually based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. If you use that, you'll need to pass a string with whitespace between each character:
+```flags``` or ```f``` are a special variant that need to be treated different. It is based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. Using that you'll need to pass a string with whitespace between each character :
 
 ```javascript
 toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
@@ -76,11 +76,3 @@ Node: `test$ node node.js`
 
 Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
 <img src="media/variants-chrome-112.png">
-
-### Playground
-
-For now: https://detfrieord.dk/tekst-til-unicode
-
-In danish, sorry. I'll plan to port it to an `.io`-site when I get the time.  
-
-
