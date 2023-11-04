@@ -53,12 +53,22 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | sans |   u,s   | 𝟢̶̲𝟣̶̲𝟤̶̲𝟥̶̲𝟦̶̲𝟧̶̲𝟨̶̲𝟩̶̲ |
 
 ### Script, gothic ..?
-Must admit this "variant" concept and their names are a little exotic. In fact they are just collections of varionus kind of mathematical symbols described in details here https://www.unicode.org/charts/PDF/U1D400.pdf.
+Must admit that this "variant" concept and their names are a little exotic. In fact they are just collections of varionus kind of mathematical symbols described in details here https://www.unicode.org/charts/PDF/U1D400.pdf.
 
-Most of the variants supports A-Z, a-z. Some variants support nummbers as well. The fullwidth variant even support all the basicallalso supports all  lot of special chars 
+Almost all of the variants supports A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table! So you can safely use that to render plain text in general. 
 
-most om them are covered [here](https://www.unicode.org/charts/PDF/U1D400.pdf)  [PDF]. wrappers for  combinations bit exotic. are my own invention for convenience. In fact is a collection 
 
+### 🇫 🇱 🇦 🇬 🇸
+
+```flags``` or ```f``` are a special variant that need to be treated different. It is actually based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. If you use that, you'll need to pass a string with whitespace between each character:
+
+```javascript
+toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
+```
+However, if you pass a string that contain a country code, or even the name of some international organizations, many readers nowadays return the corresponding flag :
+```javascript
+toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
+```
 
 ### Test
 Browser: `test/browser.html`

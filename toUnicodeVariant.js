@@ -75,7 +75,6 @@ function toUnicodeVariant(str, variant, flags) {
 		'flags': 'f'
 	}
 
-	// special characters (absolute values)
 	const special = {
 		m: {
 			' ': 0x2000,
@@ -102,9 +101,11 @@ function toUnicodeVariant(str, variant, flags) {
 		},
 		p: {}, q: {}, qn: {},
 		w: {
-			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06, "'": 0xFF07, "(": 0xFF08, ")": 0xFF09, 
+			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06, '\'': 0xFF07, "(": 0xFF08, ")": 0xFF09, 
 			"*": 0xFF0A, "+": 0xFF0B, ",": 0xFF0C, "-": 0xFF0D, ".": 0xFF0E, "/": 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
-			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F,	'@': 0xFF20
+			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F,	'@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B, ']': 0xFF3D, '^': 0xFF3E, '＿': 0xFF3F,
+			'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C, '}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '￠': 0xFFE0, '￡': 0xFFE1, '￤': 0xFFE4,
+			'￥': 0xFFE5, '￦': 0xFFE6
 		},
 		f: {
 			'A': 0x1F1E6, 'B': 0x1F1E7, 'C': 0x1F1E8, 'D': 0x1F1E9, 'E': 0x1F1EA, 'F': 0x1F1EB, 'G': 0x1F1EC, 'H': 0x1F1ED, 'I': 0x1F1EE,
@@ -113,16 +114,23 @@ function toUnicodeVariant(str, variant, flags) {
 		}
 	}
 
-	//support for parenthesized latin letters small cases 
-	//support for full width latin letters small cases 
-	//support for circled negative letters small cases 
-	//support for squared letters small cases 
-	//support for squared letters negative small cases 
-	;['p', 'w', 'on', 'q', 'qn'].forEach(t => {
+	/*
+		support for small letters
+		-	parenthesis
+		- circled negative
+		- squared
+		- squared negative
+	*/
+	;['p', 'on', 'q', 'qn'].forEach(t => {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
 		}
 	})		
+
+	//support for fullwidth small letters 
+	for (var i = 97; i <= 122; i++) {
+		special['w'][String.fromCharCode(i)] = 0xFF41 + (i-97)
+	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 	const numbers = '0123456789'
