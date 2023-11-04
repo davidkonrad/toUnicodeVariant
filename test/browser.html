@@ -44,9 +44,10 @@ body {
 			"squared negative": "qn",
 			"circled": "o",
 			"circled negative": "on",
-			"fullwidth": "w"
+			"fullwidth": "w",
+			"flags": "f"
 		},
-		"str": "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789"
+		"str": "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
 	}
 
 	const addRow = function(t, t1, t2) {
@@ -59,11 +60,16 @@ body {
 	const fTable = document.querySelector('#table-flags')
 
 	for (const v in Test.variantOffsets) {
-		addRow(vTable, v, toUnicodeVariant(v, Test.variantOffsets[v]))
-		addRow(fTable, v, toUnicodeVariant(Test.str, Test.variantOffsets[v]))
-		addRow(fTable, v + ' underline', toUnicodeVariant(Test.str, Test.variantOffsets[v], 'underline'))
-		addRow(fTable, v + ' strike', toUnicodeVariant(Test.str, Test.variantOffsets[v], 'strike'))
-		addRow(fTable, v + ' strike', toUnicodeVariant(Test.str, Test.variantOffsets[v], 'u,s'))
+		if (v === 'flags') {
+			addRow(vTable, v, toUnicodeVariant('DK FO GL U N I C O D E', Test.variantOffsets[v]))
+		} else {
+			const str = v === 'fullwidth' ? Test.str + "\n" + '!"#$%&\')(*+,-./:;<=>?@\\][^＿`}|{~｠｟￠￡￤￥￦' : Test.str
+			addRow(vTable, v, toUnicodeVariant(v, Test.variantOffsets[v]))
+			addRow(fTable, v, toUnicodeVariant(str, Test.variantOffsets[v]))
+			addRow(fTable, v + ' underline', toUnicodeVariant(str, Test.variantOffsets[v], 'underline'))
+			addRow(fTable, v + ' strike', toUnicodeVariant(str, Test.variantOffsets[v], 'strike'))
+			addRow(fTable, v + ' strike', toUnicodeVariant(str, Test.variantOffsets[v], 'u,s'))
+		}
 	}
 
 })(document);
