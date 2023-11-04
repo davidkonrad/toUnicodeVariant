@@ -23,7 +23,7 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | bold   |   b   | Bold text                        |𝐛𝐨𝐥𝐝  |
 | italic  |  i  | Italic text                       | 𝑖𝑡𝑎𝑙𝑖𝑐  |
 | bold italic   |   bi   | bold+italic text   | 𝒃𝒐𝒍𝒅 𝒊𝒕𝒂𝒍𝒊𝒄 |
-| script<sup>1</sup>     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
+| script     |   c   | Handwriting style         | 𝓈𝒸𝓇𝒾𝓅𝓉    |
 | bold script  |  bc   | Bolder handwriting     | 𝓫𝓸𝓵𝓭 𝓼𝓬𝓻𝓲𝓹𝓽      |
 | gothic  |   g   |Gothic (fraktur)            | 𝔤𝔬𝔱𝔥𝔦𝔠      |
 | gothic bold  |   bg   | Gothic in bold| 𝖌𝖔𝖙𝖍𝖎𝖈 𝖇𝖔𝖑𝖉        |
@@ -55,7 +55,7 @@ toUnicodeVariant('gothic', 'g', 'underline')
 ### Script, gothic ..?
 The "variant" concept and their naming are a little exotic. In fact they are just collections of various kind of mathematical symbols described in details here  https://www.unicode.org/charts/PDF/U1D400.pdf.
 
-Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table. So you can safely use that variant to render any kind plain text in general. 
+Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table. So you can safely use that variant to render any kind of plain text in general. 
 
 
 ### 🇫 🇱 🇦 🇬 🇸
