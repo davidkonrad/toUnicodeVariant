@@ -74,10 +74,13 @@ toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
 Browser: `test/browser.html`
 Node: `test$ node node.js`
 
-Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu, 100.0.4896) variants looks like this :<br><br>
-<img src="media/variants-chrome-100.png">
+Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
+<img src="media/variants-chrome-112.png">
 
-#### Expected output
-There are really difference between browsers/readers, versions and support of unicode variants. I have not figured it all out yet.  Still "script" is a really
-headache. Best browser for supporting both variants and flags are defently Firefox.
+### Playground
+
+For now: https://detfrieord.dk/tekst-til-unicode
+
+In danish, sorry. I'll plan to port it to an `.io`-site when I get the time.  
+
 
