@@ -65,7 +65,7 @@ Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. 
 ```javascript
 toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
 ```
-However, if you pass a string that contain a country code, or even the name of some international organizations, many readers nowadays return the corresponding flag :
+However, if you pass a string that contain a country code, or even the name of some international organization, many readers will render the corresponding flag instead :
 ```javascript
 toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
 ```
@@ -74,7 +74,7 @@ toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
 Browser: `test/browser.html`
 Node: `test$ node node.js`
 
-Those tests show all variants and their coverage a-Z, along with flags. For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
+These tests show all variants and their coverage az-AZ-09, along with flag combinations For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
 <img src="media/variants-chrome-112.png">
 
 ### Playground
