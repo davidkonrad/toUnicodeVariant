@@ -49,7 +49,10 @@ function toUnicodeVariant(str, variant, flags) {
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
-		u: [0x2090, 0xff10]
+
+		u: [0x2090, 0xff10], //??
+
+		ma: [0x1d670, 0x1d7f6]
 	}
 
 	const variantOffsets = {
@@ -71,7 +74,8 @@ function toUnicodeVariant(str, variant, flags) {
 		'circled negative': 'on',
 		'squared': 'q',
 		'squared negative': 'qn',
-		'fullwidth': 'w'
+		'fullwidth': 'w',
+		'math': 'ma'
 	}
 
 	// special characters (absolute values)
@@ -100,22 +104,18 @@ function toUnicodeVariant(str, variant, flags) {
       'Z': 0x2124
     },
 		o: {
-			'0': 0x24EA,
-			'1': 0x2460,
-			'2': 0x2461,
-			'3': 0x2462,
-			'4': 0x2463,
-			'5': 0x2464,
-			'6': 0x2465,
-			'7': 0x2466,
-			'8': 0x2467,
-			'9': 0x2468,
+			'0': 0x24EA, '1': 0x2460, '2': 0x2461, '3': 0x2462, '4': 0x2463, '5': 0x2464, '6': 0x2465, '7': 0x2466, '8': 0x2467, '9': 0x2468
 		},
 		on: {},
 		p: {},
 		q: {},
 		qn: {},
-		w: {}
+		w: {},
+		ma: {
+			'A': 0x1D49C, 'B': 0x212C, 'C': 0x1D49E, 'D': 0x1D49F, 'E': 0x2130, 'F': 0x2131, 'G': 0x1D4A2, 'H': 0x210B, 'I': 0x2110, 
+			'J': 0x1D4A5, 'K': 0x1D4A6, 'L': 0x2112, 'M': 0x2133, 'N': 0x1D4A9, 'O': 0x1D4AA, 'P': 0x1D4AB, 'Q': 0x1D4AC, 'R': 0x211B, 
+			'S': 0x1D4AE, 'T': 0x1D4AF, 'U': 0x1D4B0,	'V': 0x1D4B1, 'W': 0x1D4B2, 'X': 0x1D4B3, 'Y': 0x1D4B4, 'Z': 0x1D4B5,
+		}
 	}
 	//support for parenthesized latin letters small cases 
 	//support for full width latin letters small cases 
