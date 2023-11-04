@@ -49,10 +49,8 @@ function toUnicodeVariant(str, variant, flags) {
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
-
-		u: [0x2090, 0xff10], //??
-
-		ma: [0x1d670, 0x1d7f6]
+		ma: [0x1d670, 0x1d7f6],
+		f: [0x1d670, 0x1d7f6]
 	}
 
 	const variantOffsets = {
@@ -75,7 +73,8 @@ function toUnicodeVariant(str, variant, flags) {
 		'squared': 'q',
 		'squared negative': 'qn',
 		'fullwidth': 'w',
-		'math': 'ma'
+		'math': 'ma',
+		'flags': 'f'
 	}
 
 	// special characters (absolute values)
@@ -88,20 +87,10 @@ function toUnicodeVariant(str, variant, flags) {
 			'h': 0x210e
 		},
 		g: {
-			'C': 0x212d,
-			'H': 0x210c,
-			'I': 0x2111,
-			'R': 0x211c,
-			'Z': 0x2128
+			'C': 0x212d, 'H': 0x210c, 'I': 0x2111, 'R': 0x211c, 'Z': 0x2128
 		},
     d: {
-      'C': 0x2102,
-      'H': 0x210D,
-      'N': 0x2115,
-      'P': 0x2119,
-      'Q': 0x211A,
-      'R': 0x211D,
-      'Z': 0x2124
+      'C': 0x2102, 'H': 0x210D, 'N': 0x2115, 'P': 0x2119, 'Q': 0x211A, 'R': 0x211D, 'Z': 0x2124
     },
 		o: {
 			'0': 0x24EA, '1': 0x2460, '2': 0x2461, '3': 0x2462, '4': 0x2463, '5': 0x2464, '6': 0x2465, '7': 0x2466, '8': 0x2467, '9': 0x2468
@@ -109,9 +98,7 @@ function toUnicodeVariant(str, variant, flags) {
 		on: {
 			'0': 0x1F10C
 		},
-		p: {},
-		q: {},
-		qn: {},
+		p: {}, c: {},	q: {}, qn: {},
 		w: {
 			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06, "'": 0xFF07, "(": 0xFF08, ")": 0xFF09, 
 			"*": 0xFF0A, "+": 0xFF0B, ",": 0xFF0C, "-": 0xFF0D, ".": 0xFF0E, "/": 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
@@ -121,8 +108,14 @@ function toUnicodeVariant(str, variant, flags) {
 			'A': 0x1D49C, 'B': 0x212C, 'C': 0x1D49E, 'D': 0x1D49F, 'E': 0x2130, 'F': 0x2131, 'G': 0x1D4A2, 'H': 0x210B, 'I': 0x2110, 
 			'J': 0x1D4A5, 'K': 0x1D4A6, 'L': 0x2112, 'M': 0x2133, 'N': 0x1D4A9, 'O': 0x1D4AA, 'P': 0x1D4AB, 'Q': 0x1D4AC, 'R': 0x211B, 
 			'S': 0x1D4AE, 'T': 0x1D4AF, 'U': 0x1D4B0,	'V': 0x1D4B1, 'W': 0x1D4B2, 'X': 0x1D4B3, 'Y': 0x1D4B4, 'Z': 0x1D4B5,
+		},
+		f: {
+			'A': 0x1F1E6, 'B': 0x1F1E7, 'C': 0x1F1E8, 'D': 0x1F1E9, 'E': 0x1F1EA, 'F': 0x1F1EB, 'G': 0x1F1EC, 'H': 0x1F1ED, 'K': 0x1F1F0,
+			'L': 0x1F1F1, 'M': 0x1F1F2, 'N': 0x1F1F3, 'O': 0x1F1F4, 'P': 0x1F1F5, 'Q': 0x1F1F6, 'R': 0x1F1F7, 'S': 0x1F1F8, 'T': 0x1F1F9,
+			'U': 0x1F1FA, 'V': 0x1F1FB, 'W': 0x1F1FC, 'X': 0x1F1FD, 'Y': 0x1F1FE, 'Z': 0x1F1FF
 		}
 	}
+
 	//support for parenthesized latin letters small cases 
 	//support for full width latin letters small cases 
 	//support for circled negative letters small cases 
