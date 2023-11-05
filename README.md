@@ -77,7 +77,7 @@ Node: `test$ node node.js`
 These tests show all variants and their coverage az-AZ-09, along with flag combinations For reference, in Chrome (Ubuntu 20.04, 112.x) variants looks like this :<br><br>
 <img src="media/variants-chrome-112.png">
 
--- or you can review a sample output, [test/result-sample.html](test/result-sample.html). Try it out in different browsers - there are significant difference in coverage. 
+-- or you can review a sample output, [test/result-sample.html.txt](test/result-sample.html.txt). Try it out in different browsers - there are significant difference in coverage. 
 
 ### Playground
 
