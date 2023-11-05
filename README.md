@@ -52,13 +52,13 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | doublestruck |   strike   | 𝔸̶𝔹̶ℂ̶𝔻̶𝔼̶𝔽̶𝔾̶ℍ̶𝕀̶𝕁̶𝕂̶𝕃̶ |
 | sans |   u,s   | 𝟢̶̲𝟣̶̲𝟤̶̲𝟥̶̲𝟦̶̲𝟧̶̲𝟨̶̲𝟩̶̲ |
 
-### Script, gothic ..?
+### script, gothic ..?
 The "variant" concept and their naming are a little exotic. In fact they are just collections of various kind of mathematical symbols described in details here  https://www.unicode.org/charts/PDF/U1D400.pdf.
 
 Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table. So you can safely use that variant to render any kind of plain text in general. 
 
 
-### 🇫 🇱 🇦 🇬 🇸
+### flags
 
 ```flags``` or ```f``` are a special variant that need to be treated different. It is based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. Using that you'll need to pass a string with whitespace between each character :
 
