@@ -83,36 +83,39 @@ function toUnicodeVariant(str, variant, flags) {
 			'h': 0x210e 
 		},
 		c: { 
-			'B': 0x212C, 'E': 0x2130, 'F': 0x2131, 'H': 0x210B, 'I': 0x2110, 'L': 0x2112, 'M': 0x2133, 
-			'R': 0x211B, 'e': 0x1D4EE, 'g': 0x1D4F0, 'o': 0x1D4F8
+			'B': 0x212C, 'E': 0x2130, 'F': 0x2131, 'H': 0x210B, 'I': 0x2110, 'L': 0x2112, 
+			'M': 0x2133, 'R': 0x211B, 'e': 0x1D4EE, 'g': 0x1D4F0, 'o': 0x1D4F8
 		},
 		g: {
 			'C': 0x212d, 'H': 0x210c, 'I': 0x2111, 'R': 0x211c, 'Z': 0x2128
 		},
-    d: {
-      'C': 0x2102, 'H': 0x210D, 'N': 0x2115, 'P': 0x2119, 'Q': 0x211A, 'R': 0x211D, 'Z': 0x2124
-    },
+		d: {
+			'C': 0x2102, 'H': 0x210D, 'N': 0x2115, 'P': 0x2119, 'Q': 0x211A, 'R': 0x211D, 
+			'Z': 0x2124
+		},
 		o: {
-			'0': 0x24EA, '1': 0x2460, '2': 0x2461, '3': 0x2462, '4': 0x2463, '5': 0x2464, '6': 0x2465, 
-			'7': 0x2466, '8': 0x2467, '9': 0x2468
+			'0': 0x24EA, '1': 0x2460, '2': 0x2461, '3': 0x2462, '4': 0x2463, '5': 0x2464, 
+			'6': 0x2465, '7': 0x2466, '8': 0x2467, '9': 0x2468
 		},
 		on: {
 			'0': 0x1F10C
 		},
 		p: {}, q: {}, qn: {},
 		w: {
-			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06, '\'': 0xFF07, 
-			'(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C, '-': 0xFF0D, '.': 0xFF0E, 
-			'/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, '=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F,
-			'@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B, ']': 0xFF3D, '^': 0xFF3E, '＿': 0xFF3F,'`': 0xFF40,
-			'{': 0xFF5B, '|': 0xFF5C, '}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0,
-			'￡': 0xFFE1, '￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6
-		},
+			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06,
+			'\'': 0xFF07, '(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C,
+			'-': 0xFF0D, '.': 0xFF0E, '/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
+			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F, '@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B,
+			']': 0xFF3D, '^': 0xFF3E, '＿': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
+			'}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0, 	'￡': 0xFFE1,
+			'￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '｀': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
+			'＂': 0xFF02, '､': 0xFF64, '･': 0xFF65, '＇': 0xFF07, '．': 0xFF0E, '￣': 0xFFE3
+		}
 	}
 
 
 	// support for small letters
-	//	-	parenthesis
+	//	- parenthesis
 	//	- circled negative
 	//	- squared
 	//	- squared negative
@@ -143,21 +146,21 @@ function toUnicodeVariant(str, variant, flags) {
 	const type = getType(variant)
 	const underline = getFlag('underline|u', flags)
 	const strike = getFlag('strike|s', flags)
-  let result = ''
+	let result = ''
 
-  for (let c of str) {
-    let index
-    if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
-    if (type && (index = chars.indexOf(c)) > -1) {
-      result += String.fromCodePoint(index + offsets[type][0]) 
-    } else if (type && (index = numbers.indexOf(c)) > -1) {
-      result += String.fromCodePoint(index + offsets[type][1]) 
-    } else {
-      result += c 
-    }
-    if (underline) result += '\u0332' // add combining underline
-    if (strike) result += '\u0336' // add combining strike
-  }
+	for (let c of str) {
+		let index
+		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
+		if (type && (index = chars.indexOf(c)) > -1) {
+			result += String.fromCodePoint(index + offsets[type][0]) 
+		} else if (type && (index = numbers.indexOf(c)) > -1) {
+			result += String.fromCodePoint(index + offsets[type][1]) 
+		} else {
+			result += c 
+		}
+		if (underline) result += '\u0332' // add combining underline
+		if (strike) result += '\u0336' // add combining strike
+	}
 	return result
 }
 
