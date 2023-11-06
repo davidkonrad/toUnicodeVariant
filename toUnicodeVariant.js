@@ -4,27 +4,22 @@
  *
  * Javascript function to convert plain text to unicode variants
  *
- * Loosely based on the nodejs monotext CLI utility https://github.com/cpsdqs/monotext 
- * (c) cpsdqs 2016
- *
  * For more inspiration see  http://unicode.org/charts/
  *
- */
-
-/*
- * supported unicode variants
+ * Supported unicode variants / aliases :
  *
  * m: monospace
  * b: bold
  * i: italic
- * c: script (Mathematical Alphanumeric Symbols)
- * g: gothic / fraktur
+ * c: script 
+ * g: gothic 
  * d: double-struck
  * s: sans-serif
  * o: circled text
- * p: parenthesized latin letters
+ * p: parenthesized
  * q: squared text
  * w: fullwidth
+ *
  */
 
 function toUnicodeVariant(str, variant, flags) {
@@ -49,7 +44,7 @@ function toUnicodeVariant(str, variant, flags) {
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
-		f: [0x1F1E6, 0x1d7f6]
+		f: [0x1F1E6, 0x1d7f6],
 	}
 
 	const variantOffsets = {
@@ -107,45 +102,74 @@ function toUnicodeVariant(str, variant, flags) {
 			'-': 0xFF0D, '.': 0xFF0E, '/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
 			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F, '@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B,
 			']': 0xFF3D, '^': 0xFF3E, '＿': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
-			'}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0, 	'￡': 0xFFE1,
+			'}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0, '￡': 0xFFE1,
 			'￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '｀': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
-			'＂': 0xFF02, '､': 0xFF64, '･': 0xFF65, '＇': 0xFF07, '．': 0xFF0E, '￣': 0xFFE3
+			'＂': 0xFF02, '､': 0xFF64, '･': 0xFF65, '．': 0xFF0E, '￣': 0xFFE3
 		}
 	}
 
-
-	// support for small letters
-	//	- parenthesis
-	//	- circled negative
-	//	- squared
-	//	- squared negative
 	;['p', 'on', 'q', 'qn'].forEach(t => {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
 		}
 	})		
 
-	//support for fullwidth small letters 
 	for (var i = 97; i <= 122; i++) {
 		special['w'][String.fromCharCode(i)] = 0xFF41 + (i-97)
+	}
+
+	const diacritics = {
+		'strike': { 'short': 's', 'code': 0x0336 },
+		'strike-curly': { 'short': 'sc', 'code': 0x0334 },
+		'underline': { 'short': 'u', 'code': 0x0332 },
+		'underline-curly': { 'short': 'uc', 'code': 0x0330 },
+		'underline-sm': { 'short': 'u-sm', 'code': 0x0320 },
+		'underline-double': { 'short': 'ud', 'code': 0x0333 },
+		'underline-double-sm': { 'short': 'ud-sm', 'code': 0x0347 },
+		'overline': { 'short': 'o', 'code': 0x0305 },
+		'overline-curly': { 'short': 'oc', 'code': 0x0303 },
+		'overline-sm': { 'short': 'o-sm', 'code': 0x0304 },
+		'overline-double' : { 'short': 'od', 'code': 0x033F },
+		'slash': { 'short': 'sl', 'code': 0x0338 },
+		'a-above': { 'short': 'a-a', 'code': 0x0363 },
+		'c-above': { 'short': 'c-a', 'code': 0x0368 },
+		'd-above': { 'short': 'd-a', 'code': 0x0369 },
+		'e-above': { 'short': 'e-a', 'code': 0x0364 },
+		'h-above': { 'short': 'h-a', 'code': 0x036A },
+		'i-above': { 'short': 'i-a', 'code': 0x0365 },
+		'm-above': { 'short': 'm-a', 'code': 0x036B },
+		'o-above': { 'short': 'o-a', 'code': 0x0366 },
+		'r-above': { 'short': 'r-a', 'code': 0x036C },
+		'u-above': { 'short': 'u-a', 'code': 0x0367 },
+		'v-above': { 'short': 'v-a', 'code': 0x036E },
+		'x-above': { 'short': 'x-a', 'code': 0x036F },
+		'times-above': { 'short': 'ti-a', 'code': 0x033D },
+		'plus-below': { 'short': 'pb', 'code': 0x031F },
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 	const numbers = '0123456789'
 
-	const getType = function(variant) {
+	const type = (function() {
 		if (variantOffsets[variant]) return variantOffsets[variant]
 		if (offsets[variant]) return variant
 		return 'm' //monospace as default
-	}
-	const getFlag = function(flag, flags) {
-		if (!flags) return false
-		return flag.split('|').some(f => flags.split(',').indexOf(f) > -1)
-	}
+	})()
 
-	const type = getType(variant)
-	const underline = getFlag('underline|u', flags)
-	const strike = getFlag('strike|s', flags)
+	const combine = (function() {
+		if (!flags || typeof flags !== 'string') return false
+		let result = ''
+		flags.split(',').forEach(function(flag) {
+			flag = flag.trim().toLowerCase()
+			for (const d in diacritics) {
+				if (flag === d || flag === diacritics[d].short) {
+					result += String.fromCodePoint(diacritics[d].code)
+				}
+			}
+		})
+		return result
+	})()
+
 	let result = ''
 
 	for (let c of str) {
@@ -158,12 +182,11 @@ function toUnicodeVariant(str, variant, flags) {
 		} else {
 			result += c 
 		}
-		if (underline) result += '\u0332' // add combining underline
-		if (strike) result += '\u0336' // add combining strike
+		if (combine) result += combine
 	}
+
 	return result
 }
-
 
 if (typeof module === 'object' && module && typeof module.exports === 'object') {
 	module.exports = toUnicodeVariant
