@@ -40,7 +40,7 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | fullwidth | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 | flags | f | Regional codes | 🇩🇰 🇺 🇳 🇮 🇨 🇴 🇩 🇪 |
 
-Besides that, the text can be combined with a broad range of diacritics 
+Besides that, the text can be combined with a broad range of diacritical marks 
 
 ```javascript
 toUnicodeVariant('gothic', 'g', 'underline')
@@ -64,7 +64,7 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | cross-above | ca | 𝑎̽𝑏̽𝑐̽𝑑̽𝑒̽𝑓̽𝑔̽
 |  𝐍-above |  {a,c,d,e,h,i,m,o,r,u,v,x}-a | 𝑎ͣ𝑎ͨ𝑎ͩ𝑎ͤ𝑎ͪ𝑎ͥ𝑎ͫ𝑎ͦ𝑎ͬ𝑎ͧ𝑎ͮ𝑎ͯ
 
-Combinings can be combined as comma separated string :
+Combinings can be combined by comma separated string 
 
 ```javascript
 toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underline, slash')
@@ -77,21 +77,21 @@ toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underli
 
 * None of the *italic*-style variants supports numbers, 0-9
 * None of the figurative variants - *squared*, *circled*, *fullwidth* etc - supports complex diacritics
-* However, *fullwidth* supports the entire ASCII-table
-* No other variant support beyond an a-Z, 0-9 scope
+* However, *fullwidth* supports the entire ASCII-table; besides that, all variants are limited to the az-AZ scope
 
 ### Special chars
-Special chars are almost certainly not supported by unicode "variants". So it is looking odd if we are converting an ```â``` to the *italic* variant entity of ```<none-existing>```. But by using diacritics it is possible to *mimick* many of the special chars. So far :
+Language specific special chars are almost certainly not supported by unicode "variants", and will never be in any future. Converting a special char like ```â``` will at best look odd, probably ruin the entire string (vary on reader / browser). 
 
-|Special | Sample bold sans small | Sample bold sans capital |
+But -- by using the base latin character as fallback, and inject a makeover of diacritical marks, we can experimentally try to *mimick* some language specific characters. So far :
+
+|Special | Sample small (bold sans) | Sample capital (bold sans) |
 |:---------:|:-----:|:-----------------------------:|
 | ä | 𝗮̈ | 𝗔
+| â | 𝗮̈ | 𝗔
 | ü | 𝘂̈ | 𝗨
 | č | 𝗰̌ | 𝗖
 | õ | 𝗼͂ | 𝗢
 
-
-For most chars, capital letters combined with special diacritics looks even more awkward, so those are just rendered as their corresponding latin capital letter without diacritics.
 
 ```javascript
 toUnicodeVariant('üničode', 'bold italic') //𝒖̈𝒏𝒊𝒄̌𝒐𝒅𝒆
@@ -110,7 +110,10 @@ However, if you pass a string that contain a country code, or even the name of s
 toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
 ```
 
-### Resetting a string containing unicode with javascript :
+### Reset a unicoded' string with javascript
+
+See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+
 ```javascript
 '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟'.normalize('NFKC') //or NFKD
 ```
@@ -128,9 +131,10 @@ These tests show all variants and their coverage az-AZ-09, along with flag combi
 
 ### References
 
-https://www.unicode.org/charts/PDF/U1D400.pdf.
-
-Almost all of the variants support A-Z, a-z. Some variants support 0-9 as well. The ```fullwidth``` variant even support the entire ASCII table. So you can safely use that variant to render any kind of plain text in general. 
+https://www.unicode.org/charts/PDF/UFF00.pdf<br>
+https://www.unicode.org/charts/PDF/U1F100.pdf<br>
+https://www.unicode.org/charts/PDF/U1D400.pdf<br>
+https://www.unicode.org/charts//PDF/Unicode-4.0/U40-0300.pdf
 
 
 ### Playground

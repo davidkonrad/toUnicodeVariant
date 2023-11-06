@@ -4,21 +4,7 @@
  *
  * Javascript function to convert plain text to unicode variants
  *
- * For more inspiration see  http://unicode.org/charts/
- *
- * Supported unicode variants / aliases :
- *
- * m: monospace
- * b: bold
- * i: italic
- * c: script 
- * g: gothic 
- * d: double-struck
- * s: sans-serif
- * o: circled text
- * p: parenthesized
- * q: squared text
- * w: fullwidth
+ * For more inspiration see http://unicode.org/charts/ 
  *
  */
 
@@ -145,21 +131,25 @@ function toUnicodeVariant(str, variant, flags) {
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
 		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
+
 		//diacritics supporting special chars
 		'umlaut': { 'short': 'umlaut', 'code': 0x0308 },
 		'caron': { 'short': 'caron', 'code': 0x030C },
 		'perispomeni': { 'short': 'perispomeni', 'code': 0x0342 },
+		'circumflex': { 'short': 'circumflex', 'code': 0x0302 }, 
 	}
 
 	const special_chars = {
-		'ä': { 'char': 'a', 'diacritics': String.fromCodePoint(diacritics.umlaut.code) },
-		'Ä': { 'char': 'A', 'diacritics': false },
-		'ü': { 'char': 'u', 'diacritics': String.fromCodePoint(diacritics.umlaut.code) },
-		'Ü': { 'char': 'U', 'diacritics': false },
-		'č': { 'char': 'c', 'diacritics': String.fromCodePoint(diacritics.caron.code) },
-		'Ĉ': { 'char': 'C', 'diacritics': false },
-		'õ': { 'char': 'o', 'diacritics': String.fromCodePoint(diacritics.perispomeni.code) },
-		'Õ': { 'char': 'O', 'diacritics': false },
+		'ä': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
+		'Ä': { 'char': 'A', 'combine': false },
+		'â': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
+		'Â': { 'char': 'A', 'combine': false },
+		'ü': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
+		'Ü': { 'char': 'U', 'combine': false },
+		'č': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.caron.code) },
+		'Ĉ': { 'char': 'C', 'combine': false },
+		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.perispomeni.code) },
+		'Õ': { 'char': 'O', 'combine': false },
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -189,7 +179,7 @@ function toUnicodeVariant(str, variant, flags) {
 
 	for (let c of str) {
 		let index
-		const is_special = (c in special_chars) ? special_chars[c].diacritics : false 
+		const combine_special = (c in special_chars) ? special_chars[c].combine : false 
 		if (c in special_chars) c = special_chars[c].char
 		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
 		if (type && (index = chars.indexOf(c)) > -1) {
@@ -199,7 +189,7 @@ function toUnicodeVariant(str, variant, flags) {
 		} else {
 			result += c 
 		}
-		if (is_special) result += is_special
+		if (combine_special) result += combine_special
 		if (combine) result += combine
 	}
 
