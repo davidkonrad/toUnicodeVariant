@@ -14,10 +14,12 @@ body {
 </head>
 <body>
 
+<div id="test">
+</div>
+
 <h1>toUnicodeVariant</h1>
 <table id="table-variants"></table>
 
-<h2>With flags</h2>
 <table id="table-flags"></table>
 
 <script>
@@ -47,13 +49,20 @@ body {
 			"fullwidth": "w",
 			"flags": "f"
 		},
-		"str": "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
+		"str": "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 ÕõĈčÜüÄäÂâ",
+		"extra": "!\"#$%&\')(*+,-./:;<=>?@\\][^_`}|{~｠｟￠￡￤￥￦`ｰ｡\"､･.￣'"
 	}
 
 	const addRow = function(t, t1, t2) {
 		const tr = t.insertRow()
 		tr.insertCell().innerText = t1
 		tr.insertCell().innerText = t2
+	}
+
+	const addHeader = function(table, text) {
+		const tr = table.insertRow()
+		tr.insertCell().innerHTML = '<h3>' + text + '</h3>'
+		tr.insertCell().innerText = ''
 	}
 
 	const vTable = document.querySelector('#table-variants')
@@ -63,12 +72,27 @@ body {
 		if (v === 'flags') {
 			addRow(vTable, v, toUnicodeVariant('DK FO GL U N I C O D E', Test.variantOffsets[v]))
 		} else {
-			const str = v === 'fullwidth' ? Test.str + "\n" + '!"#$%&\')(*+,-./:;<=>?@\\][^＿`}|{~｠｟￠￡￤￥￦' : Test.str
+			addHeader(fTable, 	v)
+			const str = v === 'fullwidth' ? Test.str + "\n" + Test.extra : Test.str
 			addRow(vTable, v, toUnicodeVariant(v, Test.variantOffsets[v]))
 			addRow(fTable, v, toUnicodeVariant(str, Test.variantOffsets[v]))
-			addRow(fTable, v + ' underline', toUnicodeVariant(str, Test.variantOffsets[v], 'underline'))
-			addRow(fTable, v + ' strike', toUnicodeVariant(str, Test.variantOffsets[v], 'strike'))
-			addRow(fTable, v + ' strike', toUnicodeVariant(str, Test.variantOffsets[v], 'u,s'))
+			addRow(fTable, 'strike', toUnicodeVariant(str, Test.variantOffsets[v], 'strike'))
+			addRow(fTable, 'strike-curly', toUnicodeVariant(str, Test.variantOffsets[v], 'sc'))
+			addRow(fTable, 'underline', toUnicodeVariant(str, Test.variantOffsets[v], 'underline'))
+			addRow(fTable, 'underline-sm', toUnicodeVariant(str, Test.variantOffsets[v], 'underline-sm'))
+			addRow(fTable, 'underline-curly', toUnicodeVariant(str, Test.variantOffsets[v], 'underline-curly'))
+			addRow(fTable, 'underline-double', toUnicodeVariant(str, Test.variantOffsets[v], 'ud'))
+			addRow(fTable, 'underline-double-sm', toUnicodeVariant(str, Test.variantOffsets[v], 'ud-sm'))
+			addRow(fTable, 'overline', toUnicodeVariant(str, Test.variantOffsets[v], 'overline'))
+			addRow(fTable, 'overline-curly', toUnicodeVariant(str, Test.variantOffsets[v], 'oc'))
+			addRow(fTable, 'overline-sm', toUnicodeVariant(str, Test.variantOffsets[v], 'o-sm'))
+			addRow(fTable, 'overline-double', toUnicodeVariant(str, Test.variantOffsets[v], 'od'))
+			addRow(fTable, 'slash', toUnicodeVariant(str, Test.variantOffsets[v], 'slash'))
+			for (const above of ['a','c', 'd', 'e', 'h', 'i', 'm', 'o', 'r', 'u', 'v', 'x']) {
+				addRow(fTable, above + '-above', toUnicodeVariant(str, Test.variantOffsets[v], `${above}-above`))
+			}
+			addRow(fTable, 'cross-above', toUnicodeVariant(str, Test.variantOffsets[v], 'ca'))
+			addRow(fTable, 'plus-below', toUnicodeVariant(str, Test.variantOffsets[v], 'pb'))
 		}
 	}
 
