@@ -189,7 +189,7 @@ function toUnicodeVariant(str, variant, flags) {
 
 	for (let c of str) {
 		let index
-		const is_special = (c in special_chars) ? special_chars[c].diacritics : false
+		const is_special = (c in special_chars) ? special_chars[c].diacritics : false 
 		if (c in special_chars) c = special_chars[c].char
 		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
 		if (type && (index = chars.indexOf(c)) > -1) {
