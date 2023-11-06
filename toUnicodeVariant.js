@@ -101,10 +101,10 @@ function toUnicodeVariant(str, variant, flags) {
 			'\'': 0xFF07, '(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C,
 			'-': 0xFF0D, '.': 0xFF0E, '/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
 			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F, '@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B,
-			']': 0xFF3D, '^': 0xFF3E, '＿': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
+			']': 0xFF3D, '^': 0xFF3E, '_': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
 			'}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0, '￡': 0xFFE1,
-			'￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '｀': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
-			'＂': 0xFF02, '､': 0xFF64, '･': 0xFF65, '．': 0xFF0E, '￣': 0xFFE3
+			'￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '`': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
+			'"': 0xFF02, '､': 0xFF64, '･': 0xFF65, '.': 0xFF0E, '￣': 0xFFE3
 		}
 	}
 
@@ -143,8 +143,23 @@ function toUnicodeVariant(str, variant, flags) {
 		'u-above': { 'short': 'u-a', 'code': 0x0367 },
 		'v-above': { 'short': 'v-a', 'code': 0x036E },
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
-		'times-above': { 'short': 'ti-a', 'code': 0x033D },
+		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
+		//diacritics supporting special chars
+		'umlaut': { 'short': 'umlaut', 'code': 0x0308 },
+		'caron': { 'short': 'caron', 'code': 0x030C },
+		'perispomeni': { 'short': 'perispomeni', 'code': 0x0342 },
+	}
+
+	const special_chars = {
+		'ä': { 'char': 'a', 'diacritics': String.fromCodePoint(diacritics.umlaut.code) },
+		'Ä': { 'char': 'A', 'diacritics': false },
+		'ü': { 'char': 'u', 'diacritics': String.fromCodePoint(diacritics.umlaut.code) },
+		'Ü': { 'char': 'U', 'diacritics': false },
+		'č': { 'char': 'c', 'diacritics': String.fromCodePoint(diacritics.caron.code) },
+		'Ĉ': { 'char': 'C', 'diacritics': false },
+		'õ': { 'char': 'o', 'diacritics': String.fromCodePoint(diacritics.perispomeni.code) },
+		'Õ': { 'char': 'O', 'diacritics': false },
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -174,6 +189,8 @@ function toUnicodeVariant(str, variant, flags) {
 
 	for (let c of str) {
 		let index
+		const is_special = (c in special_chars) ? special_chars[c].diacritics : false
+		if (c in special_chars) c = special_chars[c].char
 		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
 		if (type && (index = chars.indexOf(c)) > -1) {
 			result += String.fromCodePoint(index + offsets[type][0]) 
@@ -182,6 +199,7 @@ function toUnicodeVariant(str, variant, flags) {
 		} else {
 			result += c 
 		}
+		if (is_special) result += is_special
 		if (combine) result += combine
 	}
 
