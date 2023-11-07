@@ -131,13 +131,13 @@ function toUnicodeVariant(str, variant, flags) {
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
 		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
-
 		//diacritics supporting special chars
 		'umlaut': { 'short': 'umlaut', 'code': 0x0308 },
 		'caron': { 'short': 'caron', 'code': 0x030C },
 		'perispomeni': { 'short': 'perispomeni', 'code': 0x0342 },
 		'circumflex': { 'short': 'circumflex', 'code': 0x0302 }, 
-		'ringabove': { 'short': 'ringabove', 'code': 0x030A }
+		'ringabove': { 'short': 'ringabove', 'code': 0x030A },
+		'grave': { 'short': 'grave', 'code': 0x0300 }
 	}
 
 	const special_chars = {
@@ -145,14 +145,23 @@ function toUnicodeVariant(str, variant, flags) {
 		'Ä': { 'char': 'A', 'combine': false },
 		'â': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
 		'Â': { 'char': 'A', 'combine': false },
-		'ü': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
-		'Ü': { 'char': 'U', 'combine': false },
-		'č': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.caron.code) },
-		'Ĉ': { 'char': 'C', 'combine': false },
-		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.perispomeni.code) },
-		'Õ': { 'char': 'O', 'combine': false },
 		'å': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.ringabove.code) },
 		'Å': { 'char': 'A', 'combine': false },
+
+		'č': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.caron.code) },
+		'Ĉ': { 'char': 'C', 'combine': false },
+
+		'è': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.grave.code) },
+		'È': { 'char': 'E', 'combine': false },
+
+		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.perispomeni.code) },
+		'Õ': { 'char': 'O', 'combine': false },
+
+		'ü': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
+		'Ü': { 'char': 'U', 'combine': false },
+
+
+
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'

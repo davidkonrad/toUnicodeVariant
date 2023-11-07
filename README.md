@@ -84,6 +84,7 @@ But -- by using the base latin character as fallback, and inject a makeover of d
 | â | 𝖺̂ | A
 | å | 𝖺̊ | A
 | č | 𝖼̌ | C
+| è | 𝖾̀ | E
 | õ | 𝗈͂ | O
 | ü | 𝗎̈ | U
 
