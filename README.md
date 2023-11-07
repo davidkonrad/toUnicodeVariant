@@ -62,12 +62,12 @@ toUnicodeVariant('gothic', 'g', 'underline')
 | slash | sl | 𝑎̸𝑏̸𝑐̸𝑑̸𝑒̸𝑓̸𝑔̸
 | plus-below | pb | 	𝑎̟𝑏̟𝑐̟𝑑̟𝑒̟𝑓̟𝑔̟
 | cross-above | ca | 𝑎̽𝑏̽𝑐̽𝑑̽𝑒̽𝑓̽𝑔̽
-|  𝐍-above |  {a,c,d,e,h,i,m,o,r,u,v,x}-a | 𝑎ͣ𝑎ͨ𝑎ͩ𝑎ͤ𝑎ͪ𝑎ͥ𝑎ͫ𝑎ͦ𝑎ͬ𝑎ͧ𝑎ͮ𝑎ͯ
+|  𝐍-above |  {a,c,d,e,h,i,m,o,r,u,v,x}-a | 𝑎ͣ 𝑎ͨ 𝑎ͩ 𝑎ͤ 𝑎ͪ 𝑎ͥ 𝑎ͫ 𝑎ͦ 𝑎ͬ 𝑎ͧ 𝑎ͮ 𝑎ͯ 
 
 Combinings can be combined by comma separated string 
 
 ```javascript
-toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underline, slash')
+toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underline, slash') // u, sl
 ```
 
  𝖳̸̲𝗁̸̲𝖾̸̲ ̸̲𝗊̸̲𝗎̸̲𝗂̸̲𝖼̸̲𝗄̸̲ ̸̲𝖻̸̲𝗋̸̲𝗈̸̲𝗐̸̲𝗇̸̲ ̸̲𝖿̸̲𝗈̸̲𝗑̸̲ ̸̲𝗃̸̲𝗎̸̲𝗆̸̲𝗉̸̲𝗌̸̲ ̸̲𝗈̸̲𝗏̸̲𝖾̸̲𝗋̸̲ ̸̲𝗍̸̲𝗁̸̲𝖾̸̲ ̸̲𝗅̸̲𝖺̸̲𝗓̸̲𝗒̸̲ ̸̲𝖽̸̲𝗈̸̲𝗀̸̲
@@ -103,12 +103,14 @@ toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
 ```
 However, if you pass a string that contain a country code, or even the name of some international organization, many readers will render the corresponding flag instead :
 ```javascript
-toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
+toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 ```
 
-### Reset a unicoded' string with javascript
+### Reset a unicoded' string
 
-Use ```String.normalize()```, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+Use ```String.normalize()```
+
+See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
 
 ```javascript
 '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟'.normalize('NFKC') //or NFKD
