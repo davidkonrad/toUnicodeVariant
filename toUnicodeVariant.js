@@ -234,10 +234,6 @@ function toUnicodeVariant(str, variant, flags) {
 		//'s̈': { 'char': 's', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
 	}
 
-//äâáåăǟãāȧȃḅčćċḉçċĉèéēĕëěêęȇȅğǧģġḥĩîíìḱḳņńñõöōôóòŕşșṩšśüùúûŭȕȗůūẁẃø
-
-//c̆c̈
-
 	for (const char of 'ÄÂÁÅĂǞĀȦȂĈĆĊÈĒĔËĚĞǦĢḰḲŅÕÖÜ') {
 		special_chars[char] = { 'char': char.normalize('NFD').replace(/[\u0300-\u036f]/g, ''), 'combine': false }
 	}
