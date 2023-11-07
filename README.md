@@ -40,10 +40,12 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | fullwidth | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 | flags | f | Regional codes | 🇩🇰 🇺 🇳 🇮 🇨 🇴 🇩 🇪 |
 
-Besides that, the text can be combined with a broad range of diacritical marks 
+## underline, strike and so on
+
+The unicoded' text can be combined with a broad range of diacritical marks 
 
 ```javascript
-toUnicodeVariant('gothic', 'g', 'underline')
+toUnicodeVariant('gothic', 'g', 'underline') //𝔤̲𝔬̲𝔱̲𝔥̲𝔦̲𝔠̲
 ```
 
 |Combining | Short | Sample (italic variant) |
