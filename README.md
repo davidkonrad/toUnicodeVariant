@@ -87,7 +87,7 @@ But -- by using the base latin character as fallback, and inject a makeover of d
 |Special | Sample small (bold sans) | Sample capital (bold sans) |
 |:---------:|:-----:|:-----------------------------:|
 | ä | 𝗮̈ | 𝗔
-| â | 𝗮̈ | 𝗔
+| â | 𝗮̂ | 𝗔
 | ü | 𝘂̈ | 𝗨
 | č | 𝗰̌ | 𝗖
 | õ | 𝗼͂ | 𝗢
@@ -112,7 +112,7 @@ toUnicodeVariant('DK EU UN', 'f') //🇩🇰 🇪🇺 🇺🇳
 
 ### Reset a unicoded' string with javascript
 
-See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+Use ```String.normalize()```, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
 
 ```javascript
 '𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟'.normalize('NFKC') //or NFKD
