@@ -137,6 +137,7 @@ function toUnicodeVariant(str, variant, flags) {
 		'caron': { 'short': 'caron', 'code': 0x030C },
 		'perispomeni': { 'short': 'perispomeni', 'code': 0x0342 },
 		'circumflex': { 'short': 'circumflex', 'code': 0x0302 }, 
+		'ringabove': { 'short': 'ringabove', 'code': 0x030A }
 	}
 
 	const special_chars = {
@@ -150,6 +151,8 @@ function toUnicodeVariant(str, variant, flags) {
 		'Ĉ': { 'char': 'C', 'combine': false },
 		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.perispomeni.code) },
 		'Õ': { 'char': 'O', 'combine': false },
+		'å': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.ringabove.code) },
+		'Å': { 'char': 'A', 'combine': false },
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'

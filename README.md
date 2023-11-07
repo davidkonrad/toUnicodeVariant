@@ -73,30 +73,32 @@ toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underli
  𝖳̸̲𝗁̸̲𝖾̸̲ ̸̲𝗊̸̲𝗎̸̲𝗂̸̲𝖼̸̲𝗄̸̲ ̸̲𝖻̸̲𝗋̸̲𝗈̸̲𝗐̸̲𝗇̸̲ ̸̲𝖿̸̲𝗈̸̲𝗑̸̲ ̸̲𝗃̸̲𝗎̸̲𝗆̸̲𝗉̸̲𝗌̸̲ ̸̲𝗈̸̲𝗏̸̲𝖾̸̲𝗋̸̲ ̸̲𝗍̸̲𝗁̸̲𝖾̸̲ ̸̲𝗅̸̲𝖺̸̲𝗓̸̲𝗒̸̲ ̸̲𝖽̸̲𝗈̸̲𝗀̸̲
 
 
-### Limits
-
-* None of the *italic*-style variants supports numbers, 0-9
-* None of the figurative variants - *squared*, *circled*, *fullwidth* etc - supports complex diacritics
-* However, *fullwidth* supports the entire ASCII-table; besides that, all variants are limited to the az-AZ scope
-
 ### Special chars
 Language specific special chars are almost certainly not supported by unicode "variants", and will never be in any future. Converting a special char like ```â``` will at best look odd, probably ruin the entire string (vary on reader / browser). 
 
 But -- by using the base latin character as fallback, and inject a makeover of diacritical marks, we can experimentally try to *mimick* some language specific characters. So far :
 
-|Special | Sample small (bold sans) | Sample capital (bold sans) |
+|Special | Sample small (sans) | Sample capital (sans) |
 |:---------:|:-----:|:-----------------------------:|
-| ä | 𝗮̈ | 𝗔
-| â | 𝗮̂ | 𝗔
-| ü | 𝘂̈ | 𝗨
-| č | 𝗰̌ | 𝗖
-| õ | 𝗼͂ | 𝗢
+| ä | 𝖺̈ | A
+| â | 𝖺̂ | A
+| å | 𝖺̊ | A
+| č | 𝖼̌ | C
+| õ | 𝗈͂ | O
+| ü | 𝗎̈ | U
 
 
 ```javascript
 toUnicodeVariant('üničode', 'bold italic') //𝒖̈𝒏𝒊𝒄̌𝒐𝒅𝒆
 toUnicodeVariant('ÜNIĈODE', 'bold italic') //𝑼𝑵𝑰𝑪𝑶𝑫𝑬
 ```
+
+### Limits
+
+* None of the *italic* or *gothic* -style variants supports numbers, 0-9
+* None of the figurative variants - *squared*, *circled*, *fullwidth* etc - supports complex diacritics
+* However, *fullwidth* supports the entire ASCII-table; besides that, all variants are limited to the az-AZ scope
+
 
 ### *flags* variant, f
 
