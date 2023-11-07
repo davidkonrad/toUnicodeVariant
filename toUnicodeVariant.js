@@ -131,37 +131,115 @@ function toUnicodeVariant(str, variant, flags) {
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
 		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
+
 		//diacritics supporting special chars
-		'umlaut': { 'short': 'umlaut', 'code': 0x0308 },
-		'caron': { 'short': 'caron', 'code': 0x030C },
-		'perispomeni': { 'short': 'perispomeni', 'code': 0x0342 },
-		'circumflex': { 'short': 'circumflex', 'code': 0x0302 }, 
-		'ringabove': { 'short': 'ringabove', 'code': 0x030A },
-		'grave': { 'short': 'grave', 'code': 0x0300 }
+		'diaeresis': { 'code': 0x0308 },
+		'caron': { 'code': 0x030C },
+		'perispomeni': { 'code': 0x0342 },
+		'tilde': { 'code': 0x0303 },
+		'tildesm': { 'code': 0x02DC },
+		'circumflex': { 'code': 0x0302 }, 
+		'ringabove': { 'code': 0x030A },
+		'dotabove': { 'code': 0x0307 },
+		'dotbelow': { 'code': 0x0323 },
+		'grave': { 'code': 0x0340 },
+		'gravedouble': { 'code': 0x030F },
+		'acute': { 'code': 0x0341 },
+		'breve': { 'code': 0x0306 },
+		'breveinverted': { 'code': 0x0311 },
+		'commabelow': { 'code' : 0x0326 },
+		'macron': { 'code': 0x0304 },
+		'cedilla': { 'code': 0x0327 },
+		'ogonek': { 'code': 0x0328 },
+		'solidus': { 'code': 0x0338 },
+		'solidussm': { 'code': 0x0337 }
 	}
 
 	const special_chars = {
-		'ä': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
-		'Ä': { 'char': 'A', 'combine': false },
+		'ä': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
 		'â': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
-		'Â': { 'char': 'A', 'combine': false },
+		'á': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.acute.code) },
 		'å': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.ringabove.code) },
-		'Å': { 'char': 'A', 'combine': false },
-
+		'ă': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.breve.code) },
+		'ǟ': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.diaeresis.code) + String.fromCodePoint(diacritics.macron.code) },
+		'ã': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.tilde.code) },
+		'ā': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.macron.code) },
+		'ȧ': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.dotabove.code) },
+		'ȃ': { 'char': 'a', 'combine': String.fromCodePoint(diacritics.breveinverted.code) },
+		'ḅ': { 'char': 'b', 'combine': String.fromCodePoint(diacritics.dotbelow.code) },
 		'č': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.caron.code) },
-		'Ĉ': { 'char': 'C', 'combine': false },
-
+		'ć': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ċ': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.dotabove.code) },
+		'ç': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.cedilla.code) },
+		'ḉ': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.cedilla.code) + String.fromCodePoint(diacritics.acute.code) },
+		'ċ': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.dotabove.code) },
+		'ĉ': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
 		'è': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.grave.code) },
-		'È': { 'char': 'E', 'combine': false },
+		'é': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ē': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.macron.code) }, 
+		'ĕ': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.breve.code) }, 
+		'ë': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.diaeresis.code) }, 
+		'ě': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.caron.code) }, 
+		'ę': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.ogonek.code) }, 
+		'ȇ': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.breveinverted.code) }, 
+		'ȅ': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.gravedouble.code) }, 
+		'ê': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.circumflex.code) }, 
+		'ğ': { 'char': 'g', 'combine': String.fromCodePoint(diacritics.breve.code) }, 
+		'ǧ': { 'char': 'g', 'combine': String.fromCodePoint(diacritics.caron.code) }, 
+		'ģ': { 'char': 'g', 'combine': String.fromCodePoint(diacritics.cedilla.code) }, 
+		'ġ': { 'char': 'g', 'combine': String.fromCodePoint(diacritics.dotabove.code) }, 
+		'ḥ': { 'char': 'h', 'combine': String.fromCodePoint(diacritics.dotbelow.code) }, 
+		'ĩ': { 'char': 'i', 'combine': String.fromCodePoint(diacritics.tilde.code) }, 
+		'î': { 'char': 'i', 'combine': String.fromCodePoint(diacritics.circumflex.code) }, 
+		'í': { 'char': 'i', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ì': { 'char': 'i', 'combine': String.fromCodePoint(diacritics.grave.code) },
+		'ĩ': { 'char': 'i', 'combine': String.fromCodePoint(diacritics.tilde.code) },
+		'ḱ': { 'char': 'k', 'combine': String.fromCodePoint(diacritics.acute.code) }, 
+		'ḳ': { 'char': 'k', 'combine': String.fromCodePoint(diacritics.dotbelow.code) }, 
+		'ņ': { 'char': 'n', 'combine': String.fromCodePoint(diacritics.ogonek.code) }, 
+		'ń': { 'char': 'n', 'combine': String.fromCodePoint(diacritics.acute.code) }, 
+		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.tilde.code) },
+		'ö': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
+		'ō': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.macron.code) },
+		'ô': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
+		'ó': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ò': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.grave.code) },
+		'ŕ': { 'char': 'r', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ş': { 'char': 's', 'combine': String.fromCodePoint(diacritics.cedilla.code) },
+		'ș': { 'char': 's', 'combine': String.fromCodePoint(diacritics.commabelow.code) },
+		'ṩ': { 'char': 's', 'combine': String.fromCodePoint(diacritics.dotbelow.code) + String.fromCodePoint(diacritics.dotabove.code) },
+		'š': { 'char': 's', 'combine': String.fromCodePoint(diacritics.caron.code) },
+		'ś': { 'char': 's', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ü': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
+		'ù': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.grave.code) },
+		'ú': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'û': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.circumflex.code) },
+		'ŭ': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.breve.code) },
+		'ȕ': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.gravedouble.code) },
+		'ȗ': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.breveinverted.code) },
+		'ů': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.ringabove.code) },
+		'ū': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.macron.code) },
+		'ẁ': { 'char': 'w', 'combine': String.fromCodePoint(diacritics.grave.code) },
+		'ẃ': { 'char': 'w', 'combine': String.fromCodePoint(diacritics.acute.code) },
+		'ø': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.solidussm.code) },
+		//mimicks that somehow fails
+		//'c̆': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.breve.code) },
+		//'c̈': { 'char': 'c', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
+		//'ę́': { 'char': 'e', 'combine': String.fromCodePoint(diacritics.ogonek.code) + String.fromCodePoint(diacritics.acute.code) }, 
+		//'m̂': { 'char': 'm', 'combine': String.fromCodePoint(diacritics.circumflex.code) }, 
+		//'n̂': { 'char': 'n', 'combine': String.fromCodePoint(diacritics.circumflex.code) }, 
+		//'ñ': { 'char': 'n', 'combine': String.fromCodePoint(diacritics.tilde.code) }, 
+		//'q̄': { 'char': 'q', 'combine': String.fromCodePoint(diacritics.macron.code) },
+		//'r̃': { 'char': 'r', 'combine': String.fromCodePoint(diacritics.tilde.code) },
+		//'s̈': { 'char': 's', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
+	}
 
-		'õ': { 'char': 'o', 'combine': String.fromCodePoint(diacritics.perispomeni.code) },
-		'Õ': { 'char': 'O', 'combine': false },
+//äâáåăǟãāȧȃḅčćċḉçċĉèéēĕëěêęȇȅğǧģġḥĩîíìḱḳņńñõöōôóòŕşșṩšśüùúûŭȕȗůūẁẃø
 
-		'ü': { 'char': 'u', 'combine': String.fromCodePoint(diacritics.umlaut.code) },
-		'Ü': { 'char': 'U', 'combine': false },
+//c̆c̈
 
-
-
+	for (const char of 'ÄÂÁÅĂǞĀȦȂĈĆĊÈĒĔËĚĞǦĢḰḲŅÕÖÜ') {
+		special_chars[char] = { 'char': char.normalize('NFD').replace(/[\u0300-\u036f]/g, ''), 'combine': false }
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -192,7 +270,7 @@ function toUnicodeVariant(str, variant, flags) {
 	for (let c of str) {
 		let index
 		const combine_special = (c in special_chars) ? special_chars[c].combine : false 
-		if (c in special_chars) c = special_chars[c].char
+		c = combine_special ? special_chars[c].char : c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
 		if (type && (index = chars.indexOf(c)) > -1) {
 			result += String.fromCodePoint(index + offsets[type][0]) 
