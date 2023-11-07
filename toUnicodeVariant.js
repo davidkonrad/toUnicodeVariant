@@ -131,7 +131,6 @@ function toUnicodeVariant(str, variant, flags) {
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
 		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
-
 		//diacritics supporting special chars
 		'diaeresis': { 'code': 0x0308 },
 		'caron': { 'code': 0x030C },
@@ -234,8 +233,10 @@ function toUnicodeVariant(str, variant, flags) {
 		//'s̈': { 'char': 's', 'combine': String.fromCodePoint(diacritics.diaeresis.code) },
 	}
 
-	for (const char of 'ÄÂÁÅĂǞĀȦȂĈĆĊÈĒĔËĚĞǦĢḰḲŅÕÖÜ') {
-		special_chars[char] = { 'char': char.normalize('NFD').replace(/[\u0300-\u036f]/g, ''), 'combine': false }
+	//reset special chars, capital letters
+	//in the future, some capital speciel chars can be mimicked as well
+	for (const char of Object.keys(special_chars)) {
+		special_chars[char.toUpperCase()] = { 'char': char, 'combine': false }
 	}
 
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
