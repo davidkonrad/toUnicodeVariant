@@ -90,42 +90,16 @@ function toUnicodeVariant(str, variant, flags) {
 			'15': 0x2482, '16': 0x2483, '17': 0x2484, '18': 0x2485, '19': 0x2486, '20': 0x2487
   	}, 
 		q: {
-			'hv': 0x1F14A,
-			'mv': 0x1F14B,
-			'sd': 0x1F14C,
-			'ss': 0x1F14D,
-			'ppv': 0x1F14E,
-			'wc': 0x1F14F,
-			'cl': 0x1F191,
-			'cool': 0x1F192,
-			'free': 0x1F193,
-			'id': 0x1F194,
-			'new': 0x1F195,
-			'ng': 0x1F196,
-			'ok': 0x1F197,
-			'sos': 0x1F198,
-			'up!': 0x1F199,
-			'vs': 0x1F19A,
-			'3d': 0x1F19B,
-			'2ndscr': 0x1F19C,
-			'2k': 0x1F19D,
-			'4k': 0x1F19E,
-			'8k': 0x1F19F,
-			'5.1': 0x1F1A0,
-			'7.1': 0x1F1A1,
-			'22.2': 0x1F1A2,
-			'60p': 0x1F1A3,
-			'120p': 0x1F1A4,
-			'd': 0x1F1A5,
-			'hc': 0x1F1A6,
-			'hdr': 0x1F1A7,
-			'hi-res': 0x1F1A8,
-			'loss-less': 0x1F1A9,
-			'shv': 0x1F1AA,
-			'uhd': 0x1F1AB,
-			'vod': 0x1F1AC
+			'hv': 0x1F14A, 'mv': 0x1F14B, 'sd': 0x1F14C, 'ss': 0x1F14D, 'ppv': 0x1F14E, 'wc': 0x1F14F,
+			'cl': 0x1F191, 'cool': 0x1F192, 'free': 0x1F193, 'id': 0x1F194, 'new': 0x1F195, 'ng': 0x1F196,
+			'ok': 0x1F197, 'sos': 0x1F198, 'up!': 0x1F199, 'vs': 0x1F19A, '3d': 0x1F19B, '2ndscr': 0x1F19C,
+			'2k': 0x1F19D, '4k': 0x1F19E, '8k': 0x1F19F, '5.1': 0x1F1A0, '7.1': 0x1F1A1, '22.2': 0x1F1A2,
+			'60p': 0x1F1A3, '120p': 0x1F1A4, 'd': 0x1F1A5, 'hc': 0x1F1A6, 'hdr': 0x1F1A7, 'hi-res': 0x1F1A8,
+			'loss-less': 0x1F1A9, 'shv': 0x1F1AA, 'uhd': 0x1F1AB, 'vod': 0x1F1AC
 		}, 
-		qn: {},
+		qn: {
+			'ic' : 0x1F18B, 'pa' : 0x1F18C, 'sa' : 0x1F18D, 'ab' : 0x1F18E, 'wc' : 0x1F18F
+		},
 		w: {
 			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06,
 			'\'': 0xFF07, '(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C,
@@ -314,8 +288,8 @@ function toUnicodeVariant(str, variant, flags) {
 	let result = ''
 
 	//entire sequence supported
-	if (special[type] && special[type][str]) {
-		return string(special[type][str])
+	if (special[type] && special[type][str.toLowerCase()]) {
+		return string(special[type][str.toLowerCase()])
 	}
 
 	for (let c of str) {
