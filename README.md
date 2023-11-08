@@ -2,6 +2,9 @@
 
 Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants. 
 
+I 💚 Unicode! ```toUnicodeVariant``` is an attempt to utilize unicode in a structured, organized and logical manner. Skip all the confusions and exceptions, you can render unicode just by referring to a pseudo-named subset of "fonts", also called *variants*. 
+
+
 #### browser
 ```html
 <script src="path/to/toUnicodeVariant.js"></script>
@@ -10,7 +13,7 @@ Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞ
 ```javascript
 const toUnicodeVariant = require('path/to/toUnicodeVariant.js') 
 ```
-#### usage
+#### Usage
 ```javascript
 toUnicodeVariant(string, variant, combinings)
 ...
@@ -36,11 +39,14 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | circled negative |  on   | -- negative  | 	🅒🅘🅡🅒🅛🅔🅓 |
 | squared  |  q   | Letters within squares   | 🅂🅀🅄🄰🅁🄴🄳 |
 | squared negative  |  qn   | -- negative  | 🆂🆀🆄🅰🆁🅴🅳
-| paranthesis   |  p   | Letters within paranthesis  | ⒫⒜⒭⒠⒩⒯⒣⒠⒮⒤ |
+| paranthesis   |  p   | Letters within paranthesis  | ⒫⒜⒭⒠⒩⒯⒣⒠⒮⒤⒮ |
 | fullwidth | w   | Wider monospace font   | ｆｕｌｌｗｉｄｔｈ |
 | flags | f | Regional codes | 🇩🇰 🇺 🇳 🇮 🇨 🇴 🇩 🇪 |
+| numbers dot | nd  | Numbers with trailing dot   | 🄀⒈⒉⒊⒋⒌⒍⒎⒏⒐ |
+| numbers comma | nc   | Numbers with trailing comma   | 🄁🄂🄃🄄🄅🄆🄇🄈🄉🄊|
+| number double circled | ndc | Numbers within double circle  | ⓵⓶⓷⓸⓹⓺⓻⓼⓽ |
 
-## underline, strike and so on
+## underline, strike and other diacritical marks
 
 The unicoded' text can be combined with a broad range of diacritical marks 
 
@@ -74,6 +80,9 @@ toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underli
 
  𝖳̸̲𝗁̸̲𝖾̸̲ ̸̲𝗊̸̲𝗎̸̲𝗂̸̲𝖼̸̲𝗄̸̲ ̸̲𝖻̸̲𝗋̸̲𝗈̸̲𝗐̸̲𝗇̸̲ ̸̲𝖿̸̲𝗈̸̲𝗑̸̲ ̸̲𝗃̸̲𝗎̸̲𝗆̸̲𝗉̸̲𝗌̸̲ ̸̲𝗈̸̲𝗏̸̲𝖾̸̲𝗋̸̲ ̸̲𝗍̸̲𝗁̸̲𝖾̸̲ ̸̲𝗅̸̲𝖺̸̲𝗓̸̲𝗒̸̲ ̸̲𝖽̸̲𝗈̸̲𝗀̸̲
 
+<details>
+  <summary>🔎 Compatibility table, variants / diacritical marks</summary>
+</details>
 
 ### Special chars
 Language specific special chars like ç, ò or ø are not supported by any unicode "variant", and will almost certainly never be in any future. The *script* and *gothic* fonts are in fact just various kind of mathematical symbols (see references below)  almost certainly not supported by unicode "variants", and will never be in any future. Converting a special char like ```ø``` will at best look odd, probably ruin the entire string (vary on reader / browser). 
@@ -86,12 +95,21 @@ But -- by using the base latin character as fallback, and inject a makeover of d
 </details>
 
 <br>
-All capital letters are turned into their latin root. Diacritical marks looks silly on most of them. Only in rare cases a capital letter version can be created.
+All capital letters are turned into their latin root. Diacritical marks looks silly on most of them. Only in rare cases mimicking a capital letter ends up in a readable entity.
 
 ```javascript
 toUnicodeVariant('üničode', 'bold italic') //𝒖̈𝒏𝒊𝒄̌𝒐𝒅𝒆
 toUnicodeVariant('ÜNIĈODE', 'bold italic') //𝑼𝑵𝑰𝑪𝑶𝑫𝑬
 ```
+## Compatibility tables
+<details>
+  <summary>Support of numbers, special chars, small letters and diacritics in general</summary>
+<table><thead><tr><th></th><th>Numbers</th><th>Small letters</th><th>Special chars</th><th>Diacritics</th></tr></thead><tbody><tr><td>monospace</td><td align="center">𝟶</td><td align="center">𝚊</td><td align="center">𝚌̧</td><td align="center">𝚌̶̧</td></tr><tr><td>bold</td><td align="center">𝟎</td><td align="center">𝐚</td><td align="center">𝐜̧</td><td align="center">𝐜̶̧</td></tr><tr><td>italic</td><td align="center">-</td><td align="center">𝑎</td><td align="center">𝑐̧</td><td align="center">𝑐̶̧</td></tr><tr><td>bold italic</td><td align="center">-</td><td align="center">𝒂</td><td align="center">𝒄̧</td><td align="center">𝒄̶̧</td></tr><tr><td>script</td><td align="center">-</td><td align="center">𝒶</td><td align="center">𝒸̧</td><td align="center">𝒸̶̧</td></tr><tr><td>bold script</td><td align="center">-</td><td align="center">𝓪</td><td align="center">𝓬̧</td><td align="center">𝓬̶̧</td></tr><tr><td>gothic</td><td align="center">-</td><td align="center">𝔞</td><td align="center">𝔠̧</td><td align="center">𝔠̶̧</td></tr><tr><td>gothic bold</td><td align="center">-</td><td align="center">𝖆</td><td align="center">𝖈̧</td><td align="center">𝖈̶̧</td></tr><tr><td>doublestruck</td><td align="center">𝟘</td><td align="center">𝕒</td><td align="center">𝕔̧</td><td align="center">𝕔̶̧</td></tr><tr><td>sans</td><td align="center">𝟢</td><td align="center">𝖺</td><td align="center">𝖼̧</td><td align="center">𝖼̶̧</td></tr><tr><td>bold sans</td><td align="center">𝟬</td><td align="center">𝗮</td><td align="center">𝗰̧</td><td align="center">𝗰̶̧</td></tr><tr><td>italic sans</td><td align="center">-</td><td align="center">𝘢</td><td align="center">𝘤̧</td><td align="center">𝘤̶̧</td></tr><tr><td>bold italic sans</td><td align="center">-</td><td align="center">𝙖</td><td align="center">𝙘̧</td><td align="center">𝙘̶̧</td></tr><tr><td>parenthesis</td><td align="center">𝟶</td><td align="center">⒜</td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared</td><td align="center">-</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared negative</td><td align="center">-</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled</td><td align="center">⓪</td><td align="center">ⓐ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled negative</td><td align="center">⓿</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>fullwidth</td><td align="center">０</td><td align="center">ａ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>flags</td><td align="center">𝟶</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers dot</td><td align="center">🄀</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers comma</td><td align="center">🄁</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers double circled</td><td align="center">𝟶</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr></tbody></table>
+</details>
+
+<details>
+  <summary>Variant support of diacritical marks</summary>
+</details>
 
 ### Limits
 

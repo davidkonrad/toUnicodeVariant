@@ -79,8 +79,7 @@ function toUnicodeVariant(str, variant, flags) {
 			'C': 0x212d, 'H': 0x210c, 'I': 0x2111, 'R': 0x211c, 'Z': 0x2128
 		},
 		d: {
-			'C': 0x2102, 'H': 0x210D, 'N': 0x2115, 'P': 0x2119, 'Q': 0x211A, 'R': 0x211D, 
-			'Z': 0x2124
+			'C': 0x2102, 'H': 0x210D, 'N': 0x2115, 'P': 0x2119, 'Q': 0x211A, 'R': 0x211D, 'Z': 0x2124
 		},
 		o: {
 			'0': 0x24EA, '1': 0x2460, '2': 0x2461, '3': 0x2462, '4': 0x2463, '5': 0x2464, 
@@ -91,16 +90,18 @@ function toUnicodeVariant(str, variant, flags) {
 			'16': 0x24F0, '17': 0x24F1, '18': 0x24F2, '19': 0x24F3, '20': 0x24F4
 		},
 		p: {
-			'1': 0x2474, '2': 0x2475, '3': 0x2476, '4': 0x2477, '5': 0x2478, '6': 0x2479, '7': 0x247A,
-			'8': 0x247B, '9': 0x247C, '10': 0x247D, '11': 0x247E, '12': 0x247F,	'13': 0x2480, '14': 0x2481, 
-			'15': 0x2482, '16': 0x2483, '17': 0x2484, '18': 0x2485, '19': 0x2486, '20': 0x2487
-  	}, 
+			'1': 0x2474, '2': 0x2475, '3': 0x2476, '4': 0x2477, '5': 0x2478, '6': 0x2479, 
+			'7': 0x247A, '8': 0x247B, '9': 0x247C, '10': 0x247D, '11': 0x247E, '12': 0x247F,
+			'13': 0x2480, '14': 0x2481, '15': 0x2482, '16': 0x2483, '17': 0x2484, '18': 0x2485, 
+			'19': 0x2486, '20': 0x2487
+		}, 
 		q: {
-			'hv': 0x1F14A, 'mv': 0x1F14B, 'sd': 0x1F14C, 'ss': 0x1F14D, 'ppv': 0x1F14E, 'wc': 0x1F14F,
-			'cl': 0x1F191, 'cool': 0x1F192, 'free': 0x1F193, 'id': 0x1F194, 'new': 0x1F195, 'ng': 0x1F196,
-			'ok': 0x1F197, 'sos': 0x1F198, 'up!': 0x1F199, 'vs': 0x1F19A, '3d': 0x1F19B, '2ndscr': 0x1F19C,
-			'2k': 0x1F19D, '4k': 0x1F19E, '8k': 0x1F19F, '5.1': 0x1F1A0, '7.1': 0x1F1A1, '22.2': 0x1F1A2,
-			'60p': 0x1F1A3, '120p': 0x1F1A4, 'd': 0x1F1A5, 'hc': 0x1F1A6, 'hdr': 0x1F1A7, 'hi-res': 0x1F1A8,
+			'hv': 0x1F14A, 'mv': 0x1F14B, 'sd': 0x1F14C, 'ss': 0x1F14D, 'ppv': 0x1F14E, 
+			'wc': 0x1F14F, 'cl': 0x1F191, 'cool': 0x1F192, 'free': 0x1F193, 'id': 0x1F194, 
+			'new': 0x1F195, 'ng': 0x1F196, 'ok': 0x1F197, 'sos': 0x1F198, 'up!': 0x1F199, 
+			'vs': 0x1F19A, '3d': 0x1F19B, '2ndscr': 0x1F19C, '2k': 0x1F19D, '4k': 0x1F19E, 
+			'8k': 0x1F19F, '5.1': 0x1F1A0, '7.1': 0x1F1A1, '22.2': 0x1F1A2,	'60p': 0x1F1A3, 
+			'120p': 0x1F1A4, 'd': 0x1F1A5, 'hc': 0x1F1A6, 'hdr': 0x1F1A7, 'hi-res': 0x1F1A8,
 			'loss-less': 0x1F1A9, 'shv': 0x1F1AA, 'uhd': 0x1F1AB, 'vod': 0x1F1AC
 		}, 
 		qn: {
@@ -125,13 +126,15 @@ function toUnicodeVariant(str, variant, flags) {
 	}
 
 	//paranthesis, support small letters
-	for (var i = 97; i <= 122; i++) {
-		special['p'][String.fromCharCode(i)] = 0x249C + (i-97)
-	}
 	//fullwidth, support small letters
 	for (var i = 97; i <= 122; i++) {
+		special['p'][String.fromCharCode(i)] = 0x249C + (i-97)
 		special['w'][String.fromCharCode(i)] = 0xFF41 + (i-97)
 	}
+
+	//circled negative, support small letters
+	//squared, support small letters
+	//squared negative, support small letters
 	;['on', 'q', 'qn'].forEach(t => {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
@@ -298,7 +301,7 @@ function toUnicodeVariant(str, variant, flags) {
 
 	let result = ''
 
-	//entire sequence supported
+	//if entire sequence is supported
 	if (special[type] && special[type][str.toLowerCase()]) {
 		return string(special[type][str.toLowerCase()])
 	}
