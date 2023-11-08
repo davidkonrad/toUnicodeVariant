@@ -28,7 +28,7 @@ function toUnicodeVariant(str, variant, flags) {
 		bis: [0x1d63c, 0x00030],
 		o: [0x24B6, 0x2460],
 		on: [0x0001f150, 0x2460],
-		p: [0x249c, 0x2474],
+		p: [0x1F110 /*0x249c*/, 0x1d7f6], //0x2460], //0x2474]
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
@@ -83,7 +83,30 @@ function toUnicodeVariant(str, variant, flags) {
 		on: {
 			'0': 0x1F10C
 		},
-		p: {}, q: {}, qn: {},
+		p: {
+			//'0': 0x1F10B, //!!
+			'1': 0x2474, 
+			'2': 0x2475, 
+			'3': 0x2476, 
+			'4': 0x2477, 
+			'5': 0x2478, 
+			'6': 0x2479, 
+			'7': 0x247A, 
+			'8': 0x247B, 
+			'9': 0x247C, 
+			'10': 0x247D, 
+			'11': 0x247E, 
+			'12': 0x247F,
+			'13': 0x2480,
+			'14': 0x2481,
+			'15': 0x2482,
+			'16': 0x2483,
+			'17': 0x2484,
+			'18': 0x2485, 
+			'19': 0x2486,   
+			'20': 0x2487,
+  
+		}, q: {}, qn: {},
 		w: {
 			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06,
 			'\'': 0xFF07, '(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C,
@@ -96,15 +119,20 @@ function toUnicodeVariant(str, variant, flags) {
 		}
 	}
 
-	;['p', 'on', 'q', 'qn'].forEach(t => {
+
+	//paranthesis, support small letters
+	for (var i = 97; i <= 122; i++) {
+		special['p'][String.fromCharCode(i)] = 0x249C + (i-97)
+	}
+	//fullwidth, support small letters
+	for (var i = 97; i <= 122; i++) {
+		special['w'][String.fromCharCode(i)] = 0xFF41 + (i-97)
+	}
+	;['on', 'q', 'qn'].forEach(t => {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
 		}
 	})		
-
-	for (var i = 97; i <= 122; i++) {
-		special['w'][String.fromCharCode(i)] = 0xFF41 + (i-97)
-	}
 
 	const diacritics = {
 		'strike': { 'short': 's', 'code': 0x0336 },
@@ -265,6 +293,11 @@ function toUnicodeVariant(str, variant, flags) {
 	})()
 
 	let result = ''
+
+	//entire sequence supported
+	if (special[type] && special[type][str]) {
+		return string(special[type][str])
+	}
 
 	for (let c of str) {
 		let index
