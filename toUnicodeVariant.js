@@ -33,6 +33,9 @@ function toUnicodeVariant(str, variant, flags) {
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
 		f: [0x1F1E6, 0x1d7f6],
+		dn: [0x1F1E6, 0x1d7f6],
+		cn: [0x1F1E6, 0x1d7f6],
+		dcn: [0x1F1E6, 0x1d7f6],
 	}
 
 	const variantOffsets = {
@@ -55,7 +58,10 @@ function toUnicodeVariant(str, variant, flags) {
 		'squared': 'q',
 		'squared negative': 'qn',
 		'fullwidth': 'w',
-		'flags': 'f'
+		'flags': 'f',
+		'numbers dot': 'nd',
+		'numbers comma': 'nc',
+		'numbers double circled': 'ndc',
 	}
 
 	const special = {
@@ -109,6 +115,18 @@ function toUnicodeVariant(str, variant, flags) {
 			'}': 0xFF5D, '~': 0xFF5E, '｟': 0xFF5F, '｠': 0xFF60, '￠': 0xFFE0, '￡': 0xFFE1,
 			'￤': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '`': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
 			'"': 0xFF02, '､': 0xFF64, '･': 0xFF65, '.': 0xFF0E, '￣': 0xFFE3
+		},
+		nd: {
+			'0': 0x1F100,
+			'1': 0x2488,
+			'2': 0x2489,
+			'3': 0x248A,
+			'4': 0x248B,
+			'5': 0x248C,
+			'6': 0x248D,
+			'7': 0x248E,
+			'8': 0x248F,
+			'9': 0x2490
 		}
 	}
 
