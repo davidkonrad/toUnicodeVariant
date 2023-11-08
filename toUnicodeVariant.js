@@ -27,7 +27,7 @@ function toUnicodeVariant(str, variant, flags) {
 		is: [0x1d608, 0x00030],
 		bis: [0x1d63c, 0x00030],
 		o: [0x24B6, 0x2460],
-		on: [0x0001f150, 0x2460],
+		on: [0x0001f150, 0x245F],
 		p: [0x1F110, 0x1d7f6],
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
@@ -123,7 +123,6 @@ function toUnicodeVariant(str, variant, flags) {
 			'0': 0x1d7f6
 		}
 	}
-
 
 	//paranthesis, support small letters
 	for (var i = 97; i <= 122; i++) {
