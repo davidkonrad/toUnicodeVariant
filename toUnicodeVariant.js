@@ -117,6 +117,7 @@ function toUnicodeVariant(str, variant, flags) {
 			'¦': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '`': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
 			'"': 0xFF02, '､': 0xFF64, '･': 0xFF65, '.': 0xFF0E, '￣': 0xFFE3, '¬': 0xFFE2
 		},
+		f: {},
 		nd: {
 			'0': 0x1F100, '10': 0x2491, '11': 0x2492, '12': 0x2493, '13': 0x2494, '14': 0x2495,
 			'15': 0x2496, '16': 0x2497, '17': 0x2498, '18': 0x2499, '19': 0x249A, '20': 0x249B
@@ -136,7 +137,7 @@ function toUnicodeVariant(str, variant, flags) {
 	//circled negative, support small letters
 	//squared, support small letters
 	//squared negative, support small letters
-	;['on', 'q', 'qn'].forEach(t => {
+	;['on', 'q', 'qn', 'f'].forEach(t => {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
 		}

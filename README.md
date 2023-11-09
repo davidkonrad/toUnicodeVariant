@@ -175,7 +175,7 @@ toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 <details>
   <summary>Only numbers, supports 0-9 only. Fallbacks to monospace.
 </summary>
-🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛
+🄁 🄂 🄃 🄄 🄅 🄆 🄇 🄈 🄉 🄊
 </details>
 
 #### numbers double circled, ndc
