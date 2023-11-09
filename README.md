@@ -164,6 +164,20 @@ However, if you pass a string that contain a country code, or even the name of s
 ```javascript
 toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 ```
+#### numbers dot, nd
+<details>
+  <summary>Only numbers, supports 10-20. Fallbacks to monospace.
+</summary>
+🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛
+</details>
+
+#### numbers comma, nc
+<details>
+  <summary>Only numbers, supports 0-9 only. Fallbacks to monospace.
+</summary>
+🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛
+</details>
+
 #### numbers double circled, ndc
 <details>
   <summary>Only numbers, does not support 0, supports 10. Fallbacks to monospace.
