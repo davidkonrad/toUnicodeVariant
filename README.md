@@ -155,7 +155,7 @@ Besides the limitations you can see in the compatibility table above, some varia
 
 #### flags, f
 
-```flags``` or ```f``` are a special variant that need to be treated differently. It is based on the unicode *regional indicator symbol* (see references below, U1F100.pdf). Using that you'll need to pass a string with whitespace between each character :
+az-AZ only. Based on the highly special *regional indicator symbols* (see references below, U1F100.pdf). Using that you'll need to pass a string with whitespace between each character (otherwise expect weird output, there is no fallback to monospace) :
 
 ```javascript
 toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
@@ -186,10 +186,8 @@ toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 </details>
 
 
-#### flags
 
-
-### Reset a unicoded' string
+## Reset a unicoded' string
 
 Use ```String.normalize()```
 
@@ -201,7 +199,7 @@ See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Obj
 returns ```abcdefghijklmnopqrstuvwxyz```
 
 
-### Test
+## Test
 Browser: `test/browser.html`
 Node: `test$ node node.js`
 
