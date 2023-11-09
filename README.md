@@ -125,27 +125,27 @@ Besides the limitations you can see in the compatibility table above, some varia
  </details>
 
 
-#### paranthesis
+#### paranthesis, p
 <details>
   <summary>No support of 0, but support numbers 10-20</summary>
   ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇
 </details>
 
 
-#### circled
+#### circled, o
 <details>
   <summary>Support numbers 10-20</summary>
 ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 </details>
 
-#### circled negative
+#### circled negative, on
 <details>
   <summary>Lack support of small numbers 1-9 (fallbacks to circled numbers), but support numbers 11-20
 </summary>
 ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴
 </details>
 
-#### fullwidth
+#### fullwidth, w
 <details>
   <summary>Also support basic symbols like @ and %; support a few extended ASCII codes as well
 </summary>
@@ -153,9 +153,9 @@ Besides the limitations you can see in the compatibility table above, some varia
 </details>
 
 
-#### flags
+#### flags, f
 
-```flags``` or ```f``` are a special variant that need to be treated differently. It is based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. Using that you'll need to pass a string with whitespace between each character :
+```flags``` or ```f``` are a special variant that need to be treated differently. It is based on the unicode *regional indicator symbol* (see references below, U1F100.pdf). Using that you'll need to pass a string with whitespace between each character :
 
 ```javascript
 toUnicodeVariant('U N I C O D E', 'f') //🇺 🇳 🇮 🇨 🇴 🇩 🇪
@@ -164,6 +164,16 @@ However, if you pass a string that contain a country code, or even the name of s
 ```javascript
 toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 ```
+#### numbers double circled, ndc
+<details>
+  <summary>Only numbers, does not support 0, supports 10. Fallbacks to monospace.
+</summary>
+⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾
+</details>
+
+
+#### flags
+
 
 ### Reset a unicoded' string
 
