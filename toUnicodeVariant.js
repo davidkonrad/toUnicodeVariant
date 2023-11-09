@@ -35,7 +35,7 @@ function toUnicodeVariant(str, variant, flags) {
 		f: [0x1F1E6, 0x1d7f6],
 		nd: [0x1F1E6, 0x2487],
 		nc: [0x1F1E6, 0x1F101],
-		ndc: [0x1F1E6, 0x24F4],
+		ndc: [0x1d670, 0x24F4],
 	}
 
 	const variantOffsets = {
@@ -121,7 +121,7 @@ function toUnicodeVariant(str, variant, flags) {
 			'0': 0x1F100
 		},
 		ndc: { 
-			'0': 0x1d7f6
+			'0': 0x1D7F6, '10': 0x24FE
 		}
 	}
 
