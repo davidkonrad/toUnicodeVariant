@@ -75,7 +75,7 @@ toUnicodeVariant('gothic', 'g', 'underline') //𝔤̲𝔬̲𝔱̲𝔥̲𝔦̲�
 Combinings can be combined by comma separated string 
 
 ```javascript
-toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underline, slash') // u, sl
+toUnicodeVariant('The quick brown fox jumps over the lazy dog', 'sans', 'underline, slash')
 ```
 
  𝖳̸̲𝗁̸̲𝖾̸̲ ̸̲𝗊̸̲𝗎̸̲𝗂̸̲𝖼̸̲𝗄̸̲ ̸̲𝖻̸̲𝗋̸̲𝗈̸̲𝗐̸̲𝗇̸̲ ̸̲𝖿̸̲𝗈̸̲𝗑̸̲ ̸̲𝗃̸̲𝗎̸̲𝗆̸̲𝗉̸̲𝗌̸̲ ̸̲𝗈̸̲𝗏̸̲𝖾̸̲𝗋̸̲ ̸̲𝗍̸̲𝗁̸̲𝖾̸̲ ̸̲𝗅̸̲𝖺̸̲𝗓̸̲𝗒̸̲ ̸̲𝖽̸̲𝗈̸̲𝗀̸̲
@@ -103,14 +103,14 @@ toUnicodeVariant('üničode', 'bold italic') //𝒖̈𝒏𝒊𝒄̌𝒐𝒅𝒆
 toUnicodeVariant('ÜNIĈODE', 'bold italic') //𝑼𝑵𝑰𝑪𝑶𝑫𝑬
 ```
 ## Compatibility table
-<details>
-  <summary>🔎 Support of numbers, special chars, small letters and diacritics in general</summary>
+<details open>
+  <summary>🔎 Overall support of numbers, special chars, small letters and diacritics</summary>
 <table><thead><tr><th></th><th>Numbers</th><th>Small letters</th><th>Special chars</th><th>Diacritics</th></tr></thead><tbody><tr><td>monospace</td><td align="center"> 𝟷</td><td align="center">𝚊</td><td align="center">𝚌̧</td><td align="center">𝚌̶̧</td></tr><tr><td>bold</td><td align="center"> 𝟏</td><td align="center">𝐚</td><td align="center">𝐜̧</td><td align="center">𝐜̶̧</td></tr><tr><td>italic</td><td align="center"> -</td><td align="center">𝑎</td><td align="center">𝑐̧</td><td align="center">𝑐̶̧</td></tr><tr><td>bold italic</td><td align="center"> -</td><td align="center">𝒂</td><td align="center">𝒄̧</td><td align="center">𝒄̶̧</td></tr><tr><td>script</td><td align="center"> -</td><td align="center">𝒶</td><td align="center">𝒸̧</td><td align="center">𝒸̶̧</td></tr><tr><td>bold script</td><td align="center"> -</td><td align="center">𝓪</td><td align="center">𝓬̧</td><td align="center">𝓬̶̧</td></tr><tr><td>gothic</td><td align="center"> -</td><td align="center">𝔞</td><td align="center">𝔠̧</td><td align="center">𝔠̶̧</td></tr><tr><td>gothic bold</td><td align="center"> -</td><td align="center">𝖆</td><td align="center">𝖈̧</td><td align="center">𝖈̶̧</td></tr><tr><td>doublestruck</td><td align="center"> 𝟙</td><td align="center">𝕒</td><td align="center">𝕔̧</td><td align="center">𝕔̶̧</td></tr><tr><td>sans</td><td align="center"> 𝟣</td><td align="center">𝖺</td><td align="center">𝖼̧</td><td align="center">𝖼̶̧</td></tr><tr><td>bold sans</td><td align="center"> 𝟭</td><td align="center">𝗮</td><td align="center">𝗰̧</td><td align="center">𝗰̶̧</td></tr><tr><td>italic sans</td><td align="center"> -</td><td align="center">𝘢</td><td align="center">𝘤̧</td><td align="center">𝘤̶̧</td></tr><tr><td>bold italic sans</td><td align="center"> -</td><td align="center">𝙖</td><td align="center">𝙘̧</td><td align="center">𝙘̶̧</td></tr><tr><td>parenthesis</td><td align="center"> ⑴</td><td align="center">⒜</td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared</td><td align="center"> -</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared negative</td><td align="center"> -</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled</td><td align="center"> ①</td><td align="center">ⓐ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled negative</td><td align="center"> - </td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>fullwidth</td><td align="center"> １</td><td align="center">ａ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>flags</td><td align="center"> - </td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers dot</td><td align="center"> ⒈</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers comma</td><td align="center"> 🄂</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers double circled</td><td align="center"> ⓵</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr></tbody></table>  
 </details>
 
 ### Extensions, limitations
 
-Besides the limitations you can see in the compatibility table, some variants offers some extra unique features - other variants are reduced to one single feature alone.
+Besides the limitations you can see in the compatibility table above, some variants offers extra unique features - other variants are reduced to one single feature alone.
 
 #### squared
 <details>
@@ -127,14 +127,14 @@ Besides the limitations you can see in the compatibility table, some variants of
 
 #### paranthesis
 <details>
-  <summary>No support of 0, but support number 10-20</summary>
+  <summary>No support of 0, but support numbers 10-20</summary>
   ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇
 </details>
 
 
 #### circled
 <details>
-  <summary>Only numbers can be mixed with diacritical marks. Support numbers 11-20</summary>
+  <summary>Support numbers 10-20</summary>
 ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 </details>
 
@@ -145,14 +145,15 @@ Besides the limitations you can see in the compatibility table, some variants of
 ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴
 </details>
 
-### Limits
+#### fullwidth
+<details>
+  <summary>Also support basic symbols like @ and %; support a few extended ASCII codes as well
+</summary>
+！ ＂ ＃ ＄ ％ ＆ ＇ （ ） ＊ ＋ ， － ． ／ ： ； ＜ ＝ ＞ ？ ＠ ＼ ［ ］ ＾ ＿ ｀ ｛ ｜ ｝ ～ ⦅ ⦆ ￠ ￡ ¦ ￥ ￦ ｰ ｰ ､ ･ ￣ ¬
+</details>
 
-* None of the *italic* or *gothic* -style variants supports numbers, 0-9
-* None of the figurative variants - *squared*, *circled*, *fullwidth* etc - supports complex diacritics
-* However, *fullwidth* supports the entire ASCII-table; besides that, all variants are limited to the az-AZ scope
 
-
-### *flags* variant, f
+#### flags
 
 ```flags``` or ```f``` are a special variant that need to be treated differently. It is based on the unicode *regional indicator symbol*, see https://www.unicode.org/charts/PDF/U1F100.pdf. Using that you'll need to pass a string with whitespace between each character :
 
