@@ -168,6 +168,8 @@ function toUnicodeVariant(str, variant, flags) {
 		'overline-sm': { 'short': 'o-sm', 'code': 0x0304 },
 		'overline-double' : { 'short': 'od', 'code': 0x033F },
 		'slash': { 'short': 'sl', 'code': 0x0338 },
+		'cross-above': { 'short': 'ca', 'code': 0x033D },
+		'plus-below': { 'short': 'pb', 'code': 0x031F },
 		'a-above': { 'short': 'a-a', 'code': 0x0363 },
 		'c-above': { 'short': 'c-a', 'code': 0x0368 },
 		'd-above': { 'short': 'd-a', 'code': 0x0369 },
@@ -180,11 +182,10 @@ function toUnicodeVariant(str, variant, flags) {
 		'u-above': { 'short': 'u-a', 'code': 0x0367 },
 		'v-above': { 'short': 'v-a', 'code': 0x036E },
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
-		'cross-above': { 'short': 'ca', 'code': 0x033D },
-		'plus-below': { 'short': 'pb', 'code': 0x031F },
 		'halo-breve': { 'short': 'hb', 'code': 0x0488 },
 		'halo-grave': { 'short': 'hg', 'code': 0x0489 },
 		'enclose-circle': { 'short': 'en-c', 'code': 0x20DD },
+		'enclose-backslash': { 'short': 'en-cb', 'code': 0x20E0 },
 		'enclose-circle-backslash': { 'short': 'en-cb', 'code': 0x20E0 },
 		'enclose-square': { 'short': 'en-s', 'code': 0x20DE },
 		'enclose-diamond': { 'short': 'en-d', 'code': 0x20DF },
@@ -211,8 +212,28 @@ function toUnicodeVariant(str, variant, flags) {
 		'ogonek': { 'code': 0x0328 },
 		'solidus': { 'code': 0x0338 },
 		'solidussm': { 'code': 0x0337 },
-		//
-		'spacesix': { 'code': 0x2001 }
+		//spacing combinings
+		'space-zero': { 'code': 0xFEFF },
+		'space-hair': { 'code': 0x200A },
+		'space-thin': { 'code': 0x2009 },
+		'space': { 'code': 0x0020 },
+		'space-en': { 'code': 0x2000 },
+		'space-figure': { 'code': 0x2007 },
+		'space-cjk': { 'code': 0x3000 },
+		'space-em': { 'code': 0x2001 },
+		'space-ogham': { 'code': 0x1680 },
+/*
+		'space': { 'code': 0x0020 },
+		'space-en': { 'code': 0x2000 },
+		'space-em': { 'code': 0x2001 },
+		'space-zero': { 'code': 0xFEFF },
+		'space-thin': { 'code': 0x2009 },
+		'space-hair': { 'code': 0x200A },
+		'space-punctuation': { 'code': 0x2008 },
+		'space-cjk': { 'code': 0x3000 },
+		'space-figure': { 'code': 0x2007 },
+		'space-ogham': { 'code': 0x1680 },
+*/
 	}
 
 	const special_chars = {
