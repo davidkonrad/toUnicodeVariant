@@ -222,18 +222,6 @@ function toUnicodeVariant(str, variant, flags) {
 		'space-cjk': { 'code': 0x3000 },
 		'space-em': { 'code': 0x2001 },
 		'space-ogham': { 'code': 0x1680 },
-/*
-		'space': { 'code': 0x0020 },
-		'space-en': { 'code': 0x2000 },
-		'space-em': { 'code': 0x2001 },
-		'space-zero': { 'code': 0xFEFF },
-		'space-thin': { 'code': 0x2009 },
-		'space-hair': { 'code': 0x200A },
-		'space-punctuation': { 'code': 0x2008 },
-		'space-cjk': { 'code': 0x3000 },
-		'space-figure': { 'code': 0x2007 },
-		'space-ogham': { 'code': 0x1680 },
-*/
 	}
 
 	const special_chars = {
@@ -352,7 +340,7 @@ function toUnicodeVariant(str, variant, flags) {
 	//support for romanization
 	if (['roman', 'r'].includes(type)) {
 		if (typeof str === 'number') {
-			//Based on https://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
+			//-- based on https://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
 			const parts = {
 				M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9,	V: 5, IV: 4, I: 1
 			}
@@ -361,26 +349,25 @@ function toUnicodeVariant(str, variant, flags) {
 			for (let i in parts) {
 				while (num >= parts[i] ) {
 					if (special[type][i]) {
-						roman += string(special[type][i])
+						roman += i
 					} else {
-						for (let d of i) roman += string(special[type][d])
+						for (let d of i) roman += d
 					}
 					num -= parts[i]
 				}
 			}
-			return roman
-		} else {
-			let result = str
-			const romans = ['VIII', 'viii', 'VII', 'vii', 'XII', 'xii', 'III', 'iii', 'IX', 
-											'ix', 'XI', 'xi', 'IV', 'iv', 'VI', 'vi', 'II', 'ii', 'I', 'i', 
-											'D', 'd', 'M', 'm', 'L', 'l', 'V', 'v', 'C', 'c', 'X', 'x']
-			for (number of romans) {
-				if (result.indexOf(number) > -1) {
-					result = result.replaceAll(number, string(special[type][number]))
-				}
-			}
-			return result
+			str = roman
 		}
+		let result = str
+		const romans = ['VIII', 'viii', 'III', 'iii', 'XII', 'xii', 'VII', 'vii', 'IX', 
+										'ix', 'XI', 'xi', 'IV', 'iv', 'VI', 'vi', 'II', 'ii', 'I', 'i', 
+										'D', 'd', 'M', 'm', 'L', 'l', 'V', 'v', 'C', 'c', 'X', 'x']
+		for (number of romans) {
+			if (result.indexOf(number.toString()) > -1) {
+				result = result.replaceAll(number, string(special[type][number]))
+			}
+		}
+		return result
 	}
 
 	let result = ''

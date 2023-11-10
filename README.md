@@ -1,4 +1,4 @@
-# 𝖺҉ toUnicodeVariant
+# 𝗎҉ toUnicodeVariant
 
 Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞⓓⓔ** variants. 
 
@@ -47,6 +47,7 @@ toUnicodeVariant('monospace', 'm') //like first row below
 | numbers dot | nd  | Numbers with trailing dot   | ⒈⒉⒊⒋
 | numbers comma | nc   | Numbers with trailing comma   | 🄂🄃🄄🄅|
 | number double circled | ndc | Numbers within double circle  | ⓵⓶⓷⓸ |
+| roman | r | Roman numerals | Ⅰ, Ⅱ, ⅯⅯⅩⅩⅢ |
 
 ## Combining with underline, strike and other diacritical marks
 
@@ -85,7 +86,7 @@ toUnicodeVariant('The quick brown fox jumps over ...', 'sans', 'underline, overl
 You can use shorthand aliases or a mix, ```'u,o,s'```, ```'u,o,strike'``` etc.
 
 
-### Special chars
+## Special chars
 Language specific special chars like ```ç```, ```ò``` or ```ø``` are not supported by any unicode "variant", and will almost certainly never be in any future. The *script* and *gothic* fonts are in fact just various kind of mathematical symbols (see references below). For many of the variants, converting a special char like ```ø``` will at best look odd, probably ruin the entire string (vary on reader / browser). 
 
 But -- by using the base latin character as fallback, and inject a makeover of diacritical marks, we can experimentally try to *mimick* some language specific characters. Adding diacritics fails with the figurative variants, but it works okay with most of the rest. 
@@ -96,9 +97,6 @@ But -- by using the base latin character as fallback, and inject a makeover of d
 </details>
 
 <br>
-
-### 𝑈⃟̽ 𝑛⃟̽ 𝑖⃟̽ 𝑐⃟̽ 𝑜⃟̽ 𝑑⃟̽ 𝑒⃟̽ 
-
 All capital letters are turned into their latin root. Diacritical marks looks silly on most of them. Only in rare cases mimicking a capital letter ends up in a readable entity.
 
 ```javascript
@@ -111,52 +109,48 @@ toUnicodeVariant('ÜNIĈODE', 'bold italic') //𝑼𝑵𝑰𝑪𝑶𝑫𝑬
 <table><thead><tr><th></th><th>Numbers</th><th>Small letters</th><th>Special chars</th><th>Diacritics</th></tr></thead><tbody><tr><td>monospace</td><td align="center"> 𝟷</td><td align="center">𝚊</td><td align="center">𝚌̧</td><td align="center">𝚌̶̧</td></tr><tr><td>bold</td><td align="center"> 𝟏</td><td align="center">𝐚</td><td align="center">𝐜̧</td><td align="center">𝐜̶̧</td></tr><tr><td>italic</td><td align="center"> -</td><td align="center">𝑎</td><td align="center">𝑐̧</td><td align="center">𝑐̶̧</td></tr><tr><td>bold italic</td><td align="center"> -</td><td align="center">𝒂</td><td align="center">𝒄̧</td><td align="center">𝒄̶̧</td></tr><tr><td>script</td><td align="center"> -</td><td align="center">𝒶</td><td align="center">𝒸̧</td><td align="center">𝒸̶̧</td></tr><tr><td>bold script</td><td align="center"> -</td><td align="center">𝓪</td><td align="center">𝓬̧</td><td align="center">𝓬̶̧</td></tr><tr><td>gothic</td><td align="center"> -</td><td align="center">𝔞</td><td align="center">𝔠̧</td><td align="center">𝔠̶̧</td></tr><tr><td>gothic bold</td><td align="center"> -</td><td align="center">𝖆</td><td align="center">𝖈̧</td><td align="center">𝖈̶̧</td></tr><tr><td>doublestruck</td><td align="center"> 𝟙</td><td align="center">𝕒</td><td align="center">𝕔̧</td><td align="center">𝕔̶̧</td></tr><tr><td>sans</td><td align="center"> 𝟣</td><td align="center">𝖺</td><td align="center">𝖼̧</td><td align="center">𝖼̶̧</td></tr><tr><td>bold sans</td><td align="center"> 𝟭</td><td align="center">𝗮</td><td align="center">𝗰̧</td><td align="center">𝗰̶̧</td></tr><tr><td>italic sans</td><td align="center"> -</td><td align="center">𝘢</td><td align="center">𝘤̧</td><td align="center">𝘤̶̧</td></tr><tr><td>bold italic sans</td><td align="center"> -</td><td align="center">𝙖</td><td align="center">𝙘̧</td><td align="center">𝙘̶̧</td></tr><tr><td>parenthesis</td><td align="center"> ⑴</td><td align="center">⒜</td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared</td><td align="center"> -</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>squared negative</td><td align="center"> -</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled</td><td align="center"> ①</td><td align="center">ⓐ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>circled negative</td><td align="center"> - </td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>fullwidth</td><td align="center"> １</td><td align="center">ａ</td><td align="center">-</td><td align="center">-</td></tr><tr><td>flags</td><td align="center"> - </td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers dot</td><td align="center"> ⒈</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers comma</td><td align="center"> 🄂</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr><tr><td>numbers double circled</td><td align="center"> ⓵</td><td align="center"> - </td><td align="center">-</td><td align="center">-</td></tr></tbody></table>  
 </details>
 
-### Extensions, limitations
+### Additions, limitations
 
-Besides the limitations you can see in the compatibility table above, some variants offers extra unique features - other variants are reduced to one single feature alone.
+Besides the limitations you can see in the various compatibility tables above, some variants offers extra unique features - other variants are reduced to one single feature alone.
 
-#### squared
-<details>
-  <summary>Support a mixed collection of terms and abbreviations, rendered as one unicode entity: SOS, WC, 4K, 3D, ppv ...</summary>
- 🅊 🅋 🅌 🅍 🅎 🅏 🆑 🆒 🆓 🆔 🆕 🆖 🆗 🆘 🆙 🆚 🆛 🆜 🆝 🆞 🆟 🆠 🆡 🆢 🆣 🆤 🄳
-</details>
+- <details><summary>🄰 squared, q</summary>Supports a mixed collection of terms and abbreviations, rendered as one unicode entity: SOS, WC, 4K, 3D, ppv ..<br> 🅊 🅋 🅌 🅍 🅎 🅏 🆑 🆒 🆓 🆔 🆕 🆖 🆗 🆘 🆙 🆚 🆛 🆜 🆝 🆞 🆟 🆠 🆡 🆢 🆣 🆤 🄳</details>
 
-#### squared negative
-<details>
-  <summary>Support a few abbreviations, rendered as one unicode entity: IC, PA, SA, AB, WC</summary>
-  🆋 🆌 🆍 🆎 🆏
+- <details>
+  <summary>🅰 squared negative, qn</summary>Support a few abbreviations, rendered as one unicode entity: IC, PA, SA, AB, WC<br>🆋 🆌 🆍 🆎 🆏
  </details>
 
-
-#### paranthesis, p
-<details>
-  <summary>No support of 0, but support numbers 10-20</summary>
-  ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇
+- <details><summary>🄐 paranthesis, p</summary>No support of 0, but support numbers 10-20<br>⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇
 </details>
 
-
-#### circled, o
-<details>
-  <summary>Support numbers 10-20</summary>
-⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
+- <details><summary>Ⓐ circled, o</summary>Support numbers 10-20<br>⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 </details>
 
-#### circled negative, on
-<details>
-  <summary>Lack support of small numbers 1-9 (fallbacks to circled numbers), but support numbers 11-20
-</summary>
-⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴
+- <details><summary>🅐 circled negative, on</summary>Lack support of small numbers 1-9 (fallbacks to circled numbers), but support numbers 11-20<br>⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴
 </details>
 
-#### fullwidth, w
-<details>
-  <summary>Also support basic symbols like @ and %; support a few extended ASCII codes as well
-</summary>
-！ ＂ ＃ ＄ ％ ＆ ＇ （ ） ＊ ＋ ， － ． ／ ： ； ＜ ＝ ＞ ？ ＠ ＼ ［ ］ ＾ ＿ ｀ ｛ ｜ ｝ ～ ⦅ ⦆ ￠ ￡ ¦ ￥ ￦ ｰ ｰ ､ ･ ￣ ¬
+- <details><summary>Ａ fullwidth, w</summary>Support basic symbols like @ and %; support a few extended ASCII codes as well<br>！ ＂ ＃ ＄ ％ ＆ ＇ （ ） ＊ ＋ ， － ． ／ ： ； ＜ ＝ ＞ ？ ＠ ＼ ［ ］ ＾ ＿ ｀ ｛ ｜ ｝ ～ ⦅ ⦆ ￠ ￡ ¦ ￥ ￦ ｰ ｰ ､ ･ ￣ ¬
 </details>
 
+- <details>
+  <summary>🄀 numbers dot, nd</summary>Only numbers, supports 10-20. Fallbacks to monospace<br>🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛
+</details>
 
-#### flags, f
+- <details><summary>🄁 numbers comma, nc</summary>Only numbers, supports 0-9 only. Fallbacks to monospace<br>🄁 🄂 🄃 🄄 🄅 🄆 🄇 🄈 🄉 🄊
+</details>
+
+- <details><summary>⓵ numbers double circled, ndc</summary>Only numbers, does not support 0, supports 10. Fallbacks to monospace<br>⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾
+</details>
+
+- <details><summary>Ⅻ roman, r</summary>Roman numerals only, supports both small and capital letters. Are converted to best fit of the following numeral sequenzes : <br>Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ Ⅵ Ⅶ Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ Ⅼ Ⅽ Ⅾ</details>
+
+### Ⅻ roman, continued
+If you pass a number (integer) instead of a string, that number will be *romanized* automatically before converting to unicode 
+
+```javascript
+ toUnicodeVariant(2023, 'roman') //ⅯⅯⅩⅩⅢ
+ ```
+
+### flags, f
 
 az-AZ only. Based on the highly special *regional indicator symbols* (see references below, U1F100.pdf). Using that you'll need to pass a string with whitespace between each character (otherwise expect weird output, there is no fallback to monospace) :
 
@@ -167,27 +161,6 @@ However, if you pass a string that contain a country code, or even the name of s
 ```javascript
 toUnicodeVariant('DK EU UN', 'flags') //🇩🇰 🇪🇺 🇺🇳
 ```
-#### numbers dot, nd
-<details>
-  <summary>Only numbers, supports 10-20. Fallbacks to monospace.
-</summary>
-🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛
-</details>
-
-#### numbers comma, nc
-<details>
-  <summary>Only numbers, supports 0-9 only. Fallbacks to monospace.
-</summary>
-🄁 🄂 🄃 🄄 🄅 🄆 🄇 🄈 🄉 🄊
-</details>
-
-#### numbers double circled, ndc
-<details>
-  <summary>Only numbers, does not support 0, supports 10. Fallbacks to monospace.
-</summary>
-⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾
-</details>
-
 
 
 ## Reset a unicoded' string
