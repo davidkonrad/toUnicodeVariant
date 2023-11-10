@@ -182,6 +182,14 @@ function toUnicodeVariant(str, variant, flags) {
 		'x-above': { 'short': 'x-a', 'code': 0x036F },
 		'cross-above': { 'short': 'ca', 'code': 0x033D },
 		'plus-below': { 'short': 'pb', 'code': 0x031F },
+		'halo-breve': { 'short': 'hb', 'code': 0x0488 },
+		'halo-grave': { 'short': 'hg', 'code': 0x0489 },
+		'enclose-circle': { 'short': 'en-c', 'code': 0x20DD },
+		'enclose-circle-backslash': { 'short': 'en-cb', 'code': 0x20E0 },
+		'enclose-square': { 'short': 'en-s', 'code': 0x20DE },
+		'enclose-diamond': { 'short': 'en-d', 'code': 0x20DF },
+		'enclose-screen': { 'short': 'en-scr', 'code': 0x20E2 },
+		'enclose-keycap': { 'short': 'en-key', 'code': 0x20E3 },
 		//diacritics supporting special chars
 		'diaeresis': { 'code': 0x0308 },
 		'caron': { 'code': 0x030C },
@@ -202,7 +210,9 @@ function toUnicodeVariant(str, variant, flags) {
 		'cedilla': { 'code': 0x0327 },
 		'ogonek': { 'code': 0x0328 },
 		'solidus': { 'code': 0x0338 },
-		'solidussm': { 'code': 0x0337 }
+		'solidussm': { 'code': 0x0337 },
+		//
+		'spacesix': { 'code': 0x2001 }
 	}
 
 	const special_chars = {
@@ -367,7 +377,7 @@ function toUnicodeVariant(str, variant, flags) {
 			result += c 
 		}
 		if (combine_special) result += combine_special
-		if (combine) result += combine
+		if (combine) result += combine 
 	}
 
 	return result
