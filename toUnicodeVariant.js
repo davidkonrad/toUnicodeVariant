@@ -32,10 +32,12 @@ function toUnicodeVariant(str, variant, flags) {
 		q: [0x1f130, 0x00030],
 		qn: [0x0001F170, 0x00030],
 		w: [0xff21, 0xff10],
+		//
 		f: [0x1F1E6, 0x1d7f6],
 		nd: [0x1d670, 0x2487],
 		nc: [0x1d670, 0x1F101],
 		ndc: [0x1d670, 0x24F4],
+		r: [0x1d670, 0x24F4],
 	}
 
 	const variantOffsets = {
@@ -58,10 +60,12 @@ function toUnicodeVariant(str, variant, flags) {
 		'squared': 'q',
 		'squared negative': 'qn',
 		'fullwidth': 'w',
+		//
 		'flags': 'f',
 		'numbers dot': 'nd',
 		'numbers comma': 'nc',
 		'numbers double circled': 'ndc',
+		'roman': 'r'
 	}
 
 	const special = {
@@ -124,6 +128,14 @@ function toUnicodeVariant(str, variant, flags) {
 		},
 		ndc: { 
 			'0': 0x1D7F6, '10': 0x24FE
+		},
+		r: {
+			'I': 0x2160, 'II': 0x2161, 'III': 0x2162, 'IV': 0x2163, 'V': 0x2164, 'VI': 0x2165,
+			'VII': 0x2166, 'VIII': 0x2167, 'IX': 0x2168, 'X': 0x2169, 'XI': 0x216A, 'XII': 0x216B,
+			'L': 0x216C, 'C': 0x216D, 'D': 0x216E, 'M': 0x216F, 'i': 0x2170, 'ii': 0x2171,
+			'iii': 0x2172, 'iv': 0x2173, 'v': 0x2174, 'vi': 0x2175, 'vii': 0x2176, 'viii': 0x2177,
+			'ix': 0x2178, 'x': 0x2179, 'xi': 0x217A, 'xii': 0x217B, 'l': 0x217C, 'c': 0x217D,
+			'd': 0x217E, 'm': 0x217F
 		}
 	}
 
@@ -301,12 +313,46 @@ function toUnicodeVariant(str, variant, flags) {
 		return result
 	})()
 
-	let result = ''
-
 	//if entire sequence is supported
-	if (special[type] && special[type][str.toLowerCase()]) {
-		return string(special[type][str.toLowerCase()])
+	if (typeof str === 'string' && special[type] && (special[type][str] || special[type][str.toLowerCase()])) {
+		return special[type][str] ? string(special[type][str]) : string(special[type][str.toLowerCase()])
 	}
+
+	//support for romanization
+	if (['roman', 'r'].includes(type)) {
+		if (typeof str === 'number') {
+			//Based on https://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
+			const parts = {
+				M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9,	V: 5, IV: 4, I: 1
+			}
+			let roman = ''
+			let num = str
+			for (let i in parts) {
+				while (num >= parts[i] ) {
+					if (special[type][i]) {
+						roman += string(special[type][i])
+					} else {
+						for (let d of i) roman += string(special[type][d])
+					}
+					num -= parts[i]
+				}
+			}
+			return roman
+		} else {
+			let result = str
+			const romans = ['VIII', 'viii', 'VII', 'vii', 'XII', 'xii', 'III', 'iii', 'IX', 
+											'ix', 'XI', 'xi', 'IV', 'iv', 'VI', 'vi', 'II', 'ii', 'I', 'i', 
+											'D', 'd', 'M', 'm', 'L', 'l', 'V', 'v', 'C', 'c', 'X', 'x']
+			for (number of romans) {
+				if (result.indexOf(number) > -1) {
+					result = result.replaceAll(number, string(special[type][number]))
+				}
+			}
+			return result
+		}
+	}
+
+	let result = ''
 
 	for (let c of str) {
 		let index

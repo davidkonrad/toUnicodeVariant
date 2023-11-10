@@ -213,6 +213,7 @@ These tests show all variants and their coverage az-AZ-09, along with flag combi
 https://www.unicode.org/charts/PDF/UFF00.pdf<br>
 https://www.unicode.org/charts/PDF/U1F100.pdf<br>
 https://www.unicode.org/charts/PDF/U1D400.pdf<br>
+https://www.unicode.org/charts/PDF/U2150.pdf<br>
 https://www.unicode.org/charts/PDF/U2460.pdf<br>
 https://www.unicode.org/charts//PDF/Unicode-4.0/U40-0300.pdf
 
