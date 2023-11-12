@@ -58,7 +58,6 @@ toUnicodeVariant('underlined', 'bold italic', 'underline-double')//𝒖̳𝒏̳�
 ```
 <br>
 
-
 <table><thead><tr><th>Combining</th><th>Short</th><th>Sample (italic variant)</th></tr></thead><tbody><tr><td>strike</td><td align="center">s</td><td align="center">𝑎̶𝑏̶𝑐̶𝑑̶𝑒̶𝑓̶</td></tr><tr><td>strike-curly</td><td align="center">sc</td><td align="center">𝑎̴𝑏̴𝑐̴𝑑̴𝑒̴𝑓̴</td></tr><tr><td>underline</td><td align="center">u</td><td align="center">𝑎̲𝑏̲𝑐̲𝑑̲𝑒̲𝑓̲</td></tr><tr><td>underline-curly</td><td align="center">uc</td><td align="center">𝑎̰𝑏̰𝑐̰𝑑̰𝑒̰𝑓̰</td></tr><tr><td>underline-sm</td><td align="center">u-sm</td><td align="center">𝑎̠𝑏̠𝑐̠𝑑̠𝑒̠𝑓̠</td></tr><tr><td>underline-double</td><td align="center">ud</td><td align="center">𝑎̳𝑏̳𝑐̳𝑑̳𝑒̳𝑓̳</td></tr><tr><td>underline-double-sm</td><td align="center">ud-sm</td><td align="center">𝑎͇𝑏͇𝑐͇𝑑͇𝑒͇𝑓͇</td></tr><tr><td>overline</td><td align="center">o</td><td align="center">𝑎̅𝑏̅𝑐̅𝑑̅𝑒̅𝑓̅</td></tr><tr><td>overline-curly</td><td align="center">oc</td><td align="center">𝑎̃𝑏̃𝑐̃𝑑̃𝑒̃𝑓̃</td></tr><tr><td>overline-sm</td><td align="center">o-sm</td><td align="center">𝑎̄𝑏̄𝑐̄𝑑̄𝑒̄𝑓̄</td></tr><tr><td>overline-double</td><td align="center">od</td><td align="center">𝑎̿𝑏̿𝑐̿𝑑̿𝑒̿𝑓̿</td></tr><tr><td>slash</td><td align="center">sl</td><td align="center">𝑎̸𝑏̸𝑐̸𝑑̸𝑒̸𝑓̸</td></tr><tr><td>cross-above</td><td align="center">ca</td><td align="center">𝑎̽𝑏̽𝑐̽𝑑̽𝑒̽𝑓̽</td></tr><tr><td>plus-below</td><td align="center">pb</td><td align="center">𝑎̟𝑏̟𝑐̟𝑑̟𝑒̟𝑓̟</td></tr><tr><td>enclose-circle</td><td align="center">en-c</td><td align="center">𝑎⃝ 𝑏⃝ 𝑐⃝ </td></tr><tr><td>enclose-circle-backslash</td><td align="center">en-cb</td><td align="center">𝑎⃠ 𝑏⃠ 𝑐⃠ </td></tr><tr><td>enclose-square</td><td align="center">en-s</td><td align="center">𝑎⃞ 𝑏⃞ 𝑐⃞ </td></tr><tr><td>enclose-diamond</td><td align="center">en-d</td><td align="center">𝑎⃟ 𝑏⃟ 𝑐⃟ </td></tr><tr><td>enclose-screen</td><td align="center">en-scr</td><td align="center">𝑎⃢ 𝑏⃢ 𝑐⃢ </td></tr><tr><td>enclose-keycap</td><td align="center">en-k</td><td align="center">𝑎⃣ 𝑏⃣ 𝑐⃣ </td></tr><tr><td>halo-breve</td><td align="center">hb</td><td align="center">𝖺҈ 𝖻҈ 𝖼҈ </td></tr><tr><td>halo-grave</td><td align="center">hg</td><td align="center">𝖺҉ 𝖻҉ 𝖼҉ </td></tr><tr><td>𝑛-above</td><td lign="center">{a..x}-a</td><td align="center">𝑎ͣ𝑎ͨ𝑎ͩ𝑎ͤ𝑎ͪ𝑎ͥ𝑎ͫ𝑎ͦ𝑎ͬ𝑎ͧ𝑎ͮ𝑎ͯ</td></tr></tbody></table>
 
 <details>
@@ -75,14 +74,15 @@ You can control the space between each character by using *space*-combinings. In
 </details>
 
 ### Combinings can be combined
-You can use two, three or more combinings by passing a comma separated string :
+You can use two, three or more combinings either by passing a comma separated string, or by passing an array of strings :
 
 ```javascript
 toUnicodeVariant('The quick brown fox jumps over ...', 'sans', 'underline, overline, strike')
+toUnicodeVariant('The quick brown fox jumps over ...', 'sans', ['underline', 'overline', 'strike'])
 ```
 𝖳̶̲̅𝗁̶̲̅𝖾̶̲̅ ̶̲̅𝗊̶̲̅𝗎̶̲̅𝗂̶̲̅𝖼̶̲̅𝗄̶̲̅ ̶̲̅𝖻̶̲̅𝗋̶̲̅𝗈̶̲̅𝗐̶̲̅𝗇̶̲̅ ̶̲̅𝖿̶̲̅𝗈̶̲̅𝗑̶̲̅ ̶̲̅𝗃̶̲̅𝗎̶̲̅𝗆̶̲̅𝗉̶̲̅𝗌̶̲̅ ̶̲̅𝗈̶̲̅𝗏̶̲̅𝖾̶̲̅𝗋̶̲̅ ̶̲̅𝗍̶̲̅𝗁̶̲̅𝖾̶̲̅ ̶̲̅𝗅̶̲̅𝖺̶̲̅𝗓̶̲̅𝗒̶̲̅ ̶̲̅𝖽̶̲̅𝗈̶̲̅𝗀̶̲̅
 
-You can use shorthand aliases or a mix, ```'u,o,s'```, ```'u,o,strike'``` etc.
+You can use shorthand aliases or a mix, ```'u,o,s'```,  ```['u','o','strike']``` etc.
 
 
 ## Special chars
