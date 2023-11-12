@@ -118,8 +118,8 @@ function toUnicodeVariant(str, variant, combinings) {
 			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F, '@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B,
 			']': 0xFF3D, '^': 0xFF3E, '_': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
 			'}': 0xFF5D, '~': 0xFF5E, '⦅': 0xFF5F, '⦆': 0xFF60, '￠': 0xFFE0, '￡': 0xFFE1,
-			'¦': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, '`': 0xFF40, 'ｰ': 0xFF70, '｡': 0xFF70,
-			'"': 0xFF02, '､': 0xFF64, '･': 0xFF65, '.': 0xFF0E, '￣': 0xFFE3, '¬': 0xFFE2
+			'¦': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, 'ｰ': 0xFF70, '｡': 0xFF70, 	'､': 0xFF64, 
+			'･': 0xFF65, '￣': 0xFFE3, '¬': 0xFFE2
 		},
 		f: {},
 		nd: {
@@ -240,7 +240,6 @@ function toUnicodeVariant(str, variant, combinings) {
 		'ḅ': { 'char': 'b', 'combine': string(diacritics.dotbelow.code) },
 		'č': { 'char': 'c', 'combine': string(diacritics.caron.code) },
 		'ć': { 'char': 'c', 'combine': string(diacritics.acute.code) },
-		'ċ': { 'char': 'c', 'combine': string(diacritics.dotabove.code) },
 		'ç': { 'char': 'c', 'combine': string(diacritics.cedilla.code) },
 		'ḉ': { 'char': 'c', 'combine': string(diacritics.cedilla.code) + string(diacritics.acute.code) },
 		'ċ': { 'char': 'c', 'combine': string(diacritics.dotabove.code) },
@@ -260,7 +259,6 @@ function toUnicodeVariant(str, variant, combinings) {
 		'ģ': { 'char': 'g', 'combine': string(diacritics.cedilla.code) }, 
 		'ġ': { 'char': 'g', 'combine': string(diacritics.dotabove.code) }, 
 		'ḥ': { 'char': 'h', 'combine': string(diacritics.dotbelow.code) }, 
-		'ĩ': { 'char': 'i', 'combine': string(diacritics.tilde.code) }, 
 		'î': { 'char': 'i', 'combine': string(diacritics.circumflex.code) }, 
 		'í': { 'char': 'i', 'combine': string(diacritics.acute.code) },
 		'ì': { 'char': 'i', 'combine': string(diacritics.grave.code) },
