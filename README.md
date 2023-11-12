@@ -77,8 +77,8 @@ You can control the space between each character by using *space*-combinings. In
 You can use two, three or more combinings either by passing a comma separated string, or by passing an array of strings :
 
 ```javascript
-toUnicodeVariant('The quick brown fox jumps over ...', 'sans', 'underline, overline, strike')
-toUnicodeVariant('The quick brown fox jumps over ...', 'sans', ['underline', 'overline', 'strike'])
+toUnicodeVariant('The quick brown fox jumps ...', 'sans', 'underline, overline, strike')
+toUnicodeVariant('The quick brown fox jumps ...', 'sans', ['underline', 'overline', 'strike'])
 ```
 𝖳̶̲̅𝗁̶̲̅𝖾̶̲̅ ̶̲̅𝗊̶̲̅𝗎̶̲̅𝗂̶̲̅𝖼̶̲̅𝗄̶̲̅ ̶̲̅𝖻̶̲̅𝗋̶̲̅𝗈̶̲̅𝗐̶̲̅𝗇̶̲̅ ̶̲̅𝖿̶̲̅𝗈̶̲̅𝗑̶̲̅ ̶̲̅𝗃̶̲̅𝗎̶̲̅𝗆̶̲̅𝗉̶̲̅𝗌̶̲̅ ̶̲̅𝗈̶̲̅𝗏̶̲̅𝖾̶̲̅𝗋̶̲̅ ̶̲̅𝗍̶̲̅𝗁̶̲̅𝖾̶̲̅ ̶̲̅𝗅̶̲̅𝖺̶̲̅𝗓̶̲̅𝗒̶̲̅ ̶̲̅𝖽̶̲̅𝗈̶̲̅𝗀̶̲̅
 
