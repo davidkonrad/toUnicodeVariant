@@ -8,7 +8,7 @@
  *
  */
 
-function toUnicodeVariant(str, variant, flags) {
+function toUnicodeVariant(str, variant, combinings) {
 
 	const string = String.fromCodePoint
 
@@ -222,6 +222,8 @@ function toUnicodeVariant(str, variant, flags) {
 		'space-cjk': { 'code': 0x3000 },
 		'space-em': { 'code': 0x2001 },
 		'space-ogham': { 'code': 0x1680 },
+		//combining grapheme joiner
+		'CGJ': { 'code': 0x034F }
 	}
 
 	const special_chars = {
@@ -318,14 +320,17 @@ function toUnicodeVariant(str, variant, flags) {
 		return 'm' //monospace as default
 	})()
 
-	const combine = (function() {
-		if (!flags || typeof flags !== 'string') return false
+	const combine_with = (function() {
+		let array = null
+		if (Array.isArray(combinings)) array = combinings
+		if (typeof combinings === 'string') array = combinings.split(',')
+		if (!array) return false
 		let result = ''
-		flags.split(',').forEach(function(flag) {
-			flag = flag.trim().toLowerCase()
+		array.forEach(function(diacritic) {
+			diacritic = diacritic.trim().toLowerCase()
 			for (const d in diacritics) {
-				if (flag === d || flag === diacritics[d].short) {
-					result += string(diacritics[d].code)
+				if (diacritic === d || diacritic === diacritics[d].short) {
+					result += string(diacritics[d].code) //+ string(diacritics.CGJ.code) seem not to have any effect
 				}
 			}
 		})
@@ -385,7 +390,7 @@ function toUnicodeVariant(str, variant, flags) {
 			result += c 
 		}
 		if (combine_special) result += combine_special
-		if (combine) result += combine 
+		if (combine_with) result += combine_with 
 	}
 
 	return result
