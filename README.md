@@ -13,6 +13,13 @@ Javascript function to convert a string into different kind of **ⓤⓝⓘⓒⓞ
 ```javascript
 const toUnicodeVariant = require('path/to/toUnicodeVariant.js') 
 ```
+#### typescript
+```bash
+npm install string-to-unicode-variant
+```
+```typescript
+import {string_to_unicode_variant} from "string-to-unicode-variant";
+```
 #### Usage
 Pass a string and the name of a variant (or alias), and you get the unicoded' string in return :
 
