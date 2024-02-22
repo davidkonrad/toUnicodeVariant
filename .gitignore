@@ -1,4 +1,6 @@
 __fix.txt
 inspect
 unicode
+node_modules
+dist
 

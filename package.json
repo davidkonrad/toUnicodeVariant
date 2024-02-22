@@ -1,0 +1,54 @@
+{
+  "name": "string-to-unicode-variant",
+  "version": "1.0.8-4",
+  "description": "Javascript function to convert a string into different kind of ⓤⓝⓘⓒⓞⓓⓔ variants.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/degola/toUnicodeVariant.git"
+  },
+  "keywords": [
+    "string",
+    "manipulation",
+    "unicode",
+    "variants",
+    "bold",
+    "string",
+    "italic",
+    "string",
+    "strikethrough",
+    "string"
+  ],
+  "author": "David Konrad",
+  "contributors": [
+    {
+      "name": "Sebastian Lagemann",
+      "url": "https://github.com/degola",
+      "email": "sebastian@gomsilo.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/degola/toUnicodeVariant/issues"
+  },
+  "homepage": "https://github.com/degola/toUnicodeVariant#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  }
+}
