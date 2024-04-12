@@ -214,7 +214,6 @@ function toUnicodeVariant(str, variant, combinings) {
 		'solidussm': { 'code': 0x0337 },
 		'hookabove': { 'code': 0x0309 },
     'horn': { 'code': 0x031B },
-    'macron': { 'code': 0x0304 },
 		//spacing combinings
 		'space-zero': { 'code': 0xFEFF },
 		'space-hair': { 'code': 0x200A },
