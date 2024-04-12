@@ -6,6 +6,11 @@
  *
  * For more inspiration see http://unicode.org/charts/ 
  *
+ * Contributors 
+ *
+ * @anhdung98 https://github.com/anhdung98
+ * @degola https://github.com/degola
+ *
  */
 
 function toUnicodeVariant(str, variant, combinings) {
