@@ -4,16 +4,16 @@
  *
  * Javascript function to convert plain text to unicode variants
  *
- * For more inspiration see http://unicode.org/charts/ 
+ * For more inspiration see http://unicode.org/charts/
  *
- * Contributors 
+ * Contributors
  *
  * @anhdung98 https://github.com/anhdung98
  * @degola https://github.com/degola
  *
  */
 
-function toUnicodeVariant(str, variant, combinings) {
+export function toUnicodeVariant(str: string, variant: string, combinings?: string) {
 
 	const string = String.fromCodePoint
 
@@ -74,14 +74,14 @@ function toUnicodeVariant(str, variant, combinings) {
 	}
 
 	const special = {
-		m: { 
-			' ': 0x2000, '-': 0x2013 
+		m: {
+			' ': 0x2000, '-': 0x2013
 		},
-		i: { 
-			'h': 0x210e 
+		i: {
+			'h': 0x210e
 		},
-		c: { 
-			'B': 0x212C, 'E': 0x2130, 'F': 0x2131, 'H': 0x210B, 'I': 0x2110, 'L': 0x2112, 
+		c: {
+			'B': 0x212C, 'E': 0x2130, 'F': 0x2131, 'H': 0x210B, 'I': 0x2110, 'L': 0x2112,
 			'M': 0x2133, 'R': 0x211B, 'e': 0x1D4EE, 'g': 0x1D4F0, 'o': 0x1D4F8
 		},
 		g: {
@@ -99,31 +99,31 @@ function toUnicodeVariant(str, variant, combinings) {
 			'16': 0x24F0, '17': 0x24F1, '18': 0x24F2, '19': 0x24F3, '20': 0x24F4
 		},
 		p: {
-			'1': 0x2474, '2': 0x2475, '3': 0x2476, '4': 0x2477, '5': 0x2478, '6': 0x2479, 
+			'1': 0x2474, '2': 0x2475, '3': 0x2476, '4': 0x2477, '5': 0x2478, '6': 0x2479,
 			'7': 0x247A, '8': 0x247B, '9': 0x247C, '10': 0x247D, '11': 0x247E, '12': 0x247F,
-			'13': 0x2480, '14': 0x2481, '15': 0x2482, '16': 0x2483, '17': 0x2484, '18': 0x2485, 
+			'13': 0x2480, '14': 0x2481, '15': 0x2482, '16': 0x2483, '17': 0x2484, '18': 0x2485,
 			'19': 0x2486, '20': 0x2487
-		}, 
+		},
 		q: {
-			'hv': 0x1F14A, 'mv': 0x1F14B, 'sd': 0x1F14C, 'ss': 0x1F14D, 'ppv': 0x1F14E, 
-			'wc': 0x1F14F, 'cl': 0x1F191, 'cool': 0x1F192, 'free': 0x1F193, 'id': 0x1F194, 
-			'new': 0x1F195, 'ng': 0x1F196, 'ok': 0x1F197, 'sos': 0x1F198, 'up!': 0x1F199, 
-			'vs': 0x1F19A, '3d': 0x1F19B, '2ndscr': 0x1F19C, '2k': 0x1F19D, '4k': 0x1F19E, 
-			'8k': 0x1F19F, '5.1': 0x1F1A0, '7.1': 0x1F1A1, '22.2': 0x1F1A2,	'60p': 0x1F1A3, 
+			'hv': 0x1F14A, 'mv': 0x1F14B, 'sd': 0x1F14C, 'ss': 0x1F14D, 'ppv': 0x1F14E,
+			'wc': 0x1F14F, 'cl': 0x1F191, 'cool': 0x1F192, 'free': 0x1F193, 'id': 0x1F194,
+			'new': 0x1F195, 'ng': 0x1F196, 'ok': 0x1F197, 'sos': 0x1F198, 'up!': 0x1F199,
+			'vs': 0x1F19A, '3d': 0x1F19B, '2ndscr': 0x1F19C, '2k': 0x1F19D, '4k': 0x1F19E,
+			'8k': 0x1F19F, '5.1': 0x1F1A0, '7.1': 0x1F1A1, '22.2': 0x1F1A2,	'60p': 0x1F1A3,
 			'120p': 0x1F1A4, 'd': 0x1F1A5, 'hc': 0x1F1A6, 'hdr': 0x1F1A7, 'hi-res': 0x1F1A8,
 			'loss-less': 0x1F1A9, 'shv': 0x1F1AA, 'uhd': 0x1F1AB, 'vod': 0x1F1AC
-		}, 
+		},
 		qn: {
 			'ic' : 0x1F18B, 'pa' : 0x1F18C, 'sa' : 0x1F18D, 'ab' : 0x1F18E, 'wc' : 0x1F18F
 		},
 		w: {
 			'!': 0xFF01, '"': 0xFF02, '#': 0xFF03, '$': 0xFF04, '%': 0xFF05, '&': 0xFF06,
 			'\'': 0xFF07, '(': 0xFF08, ')': 0xFF09, '*': 0xFF0A, '+': 0xFF0B, ',': 0xFF0C,
-			'-': 0xFF0D, '.': 0xFF0E, '/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C, 
+			'-': 0xFF0D, '.': 0xFF0E, '/': 0xFF0F, ':': 0xFF1A, ';': 0xFF1B, '<': 0xFF1C,
 			'=': 0xFF1D, '>': 0xFF1E, '?': 0xFF1F, '@': 0xFF20, '\\': 0xFF3C, '[': 0xFF3B,
 			']': 0xFF3D, '^': 0xFF3E, '_': 0xFF3F,'`': 0xFF40, '{': 0xFF5B, '|': 0xFF5C,
 			'}': 0xFF5D, '~': 0xFF5E, '⦅': 0xFF5F, '⦆': 0xFF60, '￠': 0xFFE0, '￡': 0xFFE1,
-			'¦': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, 'ｰ': 0xFF70, '｡': 0xFF70, 	'､': 0xFF64, 
+			'¦': 0xFFE4, '￥': 0xFFE5, '￦': 0xFFE6, 'ｰ': 0xFF70, '｡': 0xFF70, 	'､': 0xFF64,
 			'･': 0xFF65, '￣': 0xFFE3, '¬': 0xFFE2
 		},
 		f: {},
@@ -131,7 +131,7 @@ function toUnicodeVariant(str, variant, combinings) {
 			'0': 0x1F100, '10': 0x2491, '11': 0x2492, '12': 0x2493, '13': 0x2494, '14': 0x2495,
 			'15': 0x2496, '16': 0x2497, '17': 0x2498, '18': 0x2499, '19': 0x249A, '20': 0x249B
 		},
-		ndc: { 
+		ndc: {
 			'0': 0x1D7F6, '10': 0x24FE
 		},
 		r: {
@@ -158,7 +158,7 @@ function toUnicodeVariant(str, variant, combinings) {
 		for (var i = 97; i <= 122; i++) {
 			special[t][String.fromCharCode(i)] = offsets[t][0] + (i-97)
 		}
-	})		
+	})
 
 	const diacritics = {
 		'strike': { 'short': 's', 'code': 0x0336 },
@@ -202,7 +202,7 @@ function toUnicodeVariant(str, variant, combinings) {
 		'perispomeni': { 'code': 0x0342 },
 		'tilde': { 'code': 0x0303 },
 		'tildesm': { 'code': 0x02DC },
-		'circumflex': { 'code': 0x0302 }, 
+		'circumflex': { 'code': 0x0302 },
 		'ringabove': { 'code': 0x030A },
 		'dotabove': { 'code': 0x0307 },
 		'dotbelow': { 'code': 0x0323 },
@@ -253,27 +253,27 @@ function toUnicodeVariant(str, variant, combinings) {
 		'ĉ': { 'char': 'c', 'combine': string(diacritics.circumflex.code) },
 		'è': { 'char': 'e', 'combine': string(diacritics.grave.code) },
 		'é': { 'char': 'e', 'combine': string(diacritics.acute.code) },
-		'ē': { 'char': 'e', 'combine': string(diacritics.macron.code) }, 
-		'ĕ': { 'char': 'e', 'combine': string(diacritics.breve.code) }, 
-		'ë': { 'char': 'e', 'combine': string(diacritics.diaeresis.code) }, 
-		'ě': { 'char': 'e', 'combine': string(diacritics.caron.code) }, 
-		'ę': { 'char': 'e', 'combine': string(diacritics.ogonek.code) }, 
-		'ȇ': { 'char': 'e', 'combine': string(diacritics.breveinverted.code) }, 
-		'ȅ': { 'char': 'e', 'combine': string(diacritics.gravedouble.code) }, 
-		'ê': { 'char': 'e', 'combine': string(diacritics.circumflex.code) }, 
-		'ğ': { 'char': 'g', 'combine': string(diacritics.breve.code) }, 
-		'ǧ': { 'char': 'g', 'combine': string(diacritics.caron.code) }, 
-		'ģ': { 'char': 'g', 'combine': string(diacritics.cedilla.code) }, 
-		'ġ': { 'char': 'g', 'combine': string(diacritics.dotabove.code) }, 
-		'ḥ': { 'char': 'h', 'combine': string(diacritics.dotbelow.code) }, 
-		'î': { 'char': 'i', 'combine': string(diacritics.circumflex.code) }, 
+		'ē': { 'char': 'e', 'combine': string(diacritics.macron.code) },
+		'ĕ': { 'char': 'e', 'combine': string(diacritics.breve.code) },
+		'ë': { 'char': 'e', 'combine': string(diacritics.diaeresis.code) },
+		'ě': { 'char': 'e', 'combine': string(diacritics.caron.code) },
+		'ę': { 'char': 'e', 'combine': string(diacritics.ogonek.code) },
+		'ȇ': { 'char': 'e', 'combine': string(diacritics.breveinverted.code) },
+		'ȅ': { 'char': 'e', 'combine': string(diacritics.gravedouble.code) },
+		'ê': { 'char': 'e', 'combine': string(diacritics.circumflex.code) },
+		'ğ': { 'char': 'g', 'combine': string(diacritics.breve.code) },
+		'ǧ': { 'char': 'g', 'combine': string(diacritics.caron.code) },
+		'ģ': { 'char': 'g', 'combine': string(diacritics.cedilla.code) },
+		'ġ': { 'char': 'g', 'combine': string(diacritics.dotabove.code) },
+		'ḥ': { 'char': 'h', 'combine': string(diacritics.dotbelow.code) },
+		'î': { 'char': 'i', 'combine': string(diacritics.circumflex.code) },
 		'í': { 'char': 'i', 'combine': string(diacritics.acute.code) },
 		'ì': { 'char': 'i', 'combine': string(diacritics.grave.code) },
 		'ĩ': { 'char': 'i', 'combine': string(diacritics.tilde.code) },
-		'ḱ': { 'char': 'k', 'combine': string(diacritics.acute.code) }, 
-		'ḳ': { 'char': 'k', 'combine': string(diacritics.dotbelow.code) }, 
-		'ņ': { 'char': 'n', 'combine': string(diacritics.ogonek.code) }, 
-		'ń': { 'char': 'n', 'combine': string(diacritics.acute.code) }, 
+		'ḱ': { 'char': 'k', 'combine': string(diacritics.acute.code) },
+		'ḳ': { 'char': 'k', 'combine': string(diacritics.dotbelow.code) },
+		'ņ': { 'char': 'n', 'combine': string(diacritics.ogonek.code) },
+		'ń': { 'char': 'n', 'combine': string(diacritics.acute.code) },
 		'õ': { 'char': 'o', 'combine': string(diacritics.tilde.code) },
 		'ö': { 'char': 'o', 'combine': string(diacritics.diaeresis.code) },
 		'ō': { 'char': 'o', 'combine': string(diacritics.macron.code) },
@@ -301,10 +301,10 @@ function toUnicodeVariant(str, variant, combinings) {
 		//mimicks that somehow fails
 		//'c̆': { 'char': 'c', 'combine': string(diacritics.breve.code) },
 		//'c̈': { 'char': 'c', 'combine': string(diacritics.diaeresis.code) },
-		//'ę́': { 'char': 'e', 'combine': string(diacritics.ogonek.code) + string(diacritics.acute.code) }, 
-		//'m̂': { 'char': 'm', 'combine': string(diacritics.circumflex.code) }, 
-		//'n̂': { 'char': 'n', 'combine': string(diacritics.circumflex.code) }, 
-		//'ñ': { 'char': 'n', 'combine': string(diacritics.tilde.code) }, 
+		//'ę́': { 'char': 'e', 'combine': string(diacritics.ogonek.code) + string(diacritics.acute.code) },
+		//'m̂': { 'char': 'm', 'combine': string(diacritics.circumflex.code) },
+		//'n̂': { 'char': 'n', 'combine': string(diacritics.circumflex.code) },
+		//'ñ': { 'char': 'n', 'combine': string(diacritics.tilde.code) },
 		//'q̄': { 'char': 'q', 'combine': string(diacritics.macron.code) },
 		//'r̃': { 'char': 'r', 'combine': string(diacritics.tilde.code) },
 		//'s̈': { 'char': 's', 'combine': string(diacritics.diaeresis.code) },
@@ -377,7 +377,7 @@ function toUnicodeVariant(str, variant, combinings) {
 	})()
 
 	const combine_with = (function() {
-		let array = null
+		let array: string[] | null  = null
 		if (Array.isArray(combinings)) array = combinings
 		if (typeof combinings === 'string') array = combinings.split(',')
 		if (!array) return false
@@ -406,7 +406,7 @@ function toUnicodeVariant(str, variant, combinings) {
 				M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9,	V: 5, IV: 4, I: 1
 			}
 			let roman = ''
-			let num = str
+			let num: number = str
 			for (let i in parts) {
 				while (num >= parts[i] ) {
 					if (special[type][i]) {
@@ -420,10 +420,10 @@ function toUnicodeVariant(str, variant, combinings) {
 			str = roman
 		}
 		let result = str
-		const romans = ['VIII', 'viii', 'III', 'iii', 'XII', 'xii', 'VII', 'vii', 'IX', 
-										'ix', 'XI', 'xi', 'IV', 'iv', 'VI', 'vi', 'II', 'ii', 'I', 'i', 
+		const romans = ['VIII', 'viii', 'III', 'iii', 'XII', 'xii', 'VII', 'vii', 'IX',
+										'ix', 'XI', 'xi', 'IV', 'iv', 'VI', 'vi', 'II', 'ii', 'I', 'i',
 										'D', 'd', 'M', 'm', 'L', 'l', 'V', 'v', 'C', 'c', 'X', 'x']
-		for (number of romans) {
+		for (const number of romans) {
 			if (result.indexOf(number.toString()) > -1) {
 				result = result.replaceAll(number, string(special[type][number]))
 			}
@@ -435,25 +435,19 @@ function toUnicodeVariant(str, variant, combinings) {
 
 	for (let c of str) {
 		let index
-		const combine_special = (c in special_chars) ? special_chars[c].combine : false 
+		const combine_special = (c in special_chars) ? special_chars[c].combine : false
 		c = combine_special ? special_chars[c].char : c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 		if (special[type] && special[type][c]) c = string(special[type][c])
 		if (type && (index = chars.indexOf(c)) > -1) {
-			result += string(index + offsets[type][0]) 
+			result += string(index + offsets[type][0])
 		} else if (type && (index = numbers.indexOf(c)) > -1) {
-			result += string(index + offsets[type][1]) 
+			result += string(index + offsets[type][1])
 		} else {
-			result += c 
+			result += c
 		}
 		if (combine_special) result += combine_special
-		if (combine_with) result += combine_with 
+		if (combine_with) result += combine_with
 	}
 
 	return result
 }
-
-if (typeof module === 'object' && module && typeof module.exports === 'object') {
-	module.exports = toUnicodeVariant
-}
-
-
