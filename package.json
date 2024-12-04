@@ -5,14 +5,25 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
   ],
   "directories": {
     "test": "test"
   },
   "scripts": {
     "build": "tsup",
+    "prepare": "npm run build",
     "test": "jest"
   },
   "repository": {
