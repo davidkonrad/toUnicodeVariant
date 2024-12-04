@@ -1,5 +1,6 @@
-import { toUnicodeVariant } from "./toUnicodeVariant";
-import { detectUnicodeVariant } from "./detectUnicodeVariant";
+import {toUnicodeVariant} from "./toUnicodeVariant";
+export {detectUnicodeVariant} from "./detectUnicodeVariant";
+export {Variant, VariantKey, diacritics, offsets, special, special_chars, variantOffsets} from './constant';
 
 // Deprecation warning for backward compatibility
 export const string_to_unicode_variant = (...args: Parameters<typeof toUnicodeVariant>) => {
@@ -8,6 +9,4 @@ export const string_to_unicode_variant = (...args: Parameters<typeof toUnicodeVa
   );
   return toUnicodeVariant(...args);
 };
-
-// Explicit exports
-export { toUnicodeVariant, detectUnicodeVariant };
+export { toUnicodeVariant };
