@@ -28,7 +28,7 @@ describe("detectUnicodeVariant", () => {
     ];
     variant.forEach((variantName) => {
       const unicodeString = toUnicodeVariant(testString, variantName as any);
-      const detectedVariant = detectUnicodeVariant(unicodeString);
+      const detectedVariant = detectUnicodeVariant(unicodeString.codePointAt(0)!);
       expect(detectedVariant).toBe(variantName);
     });
   });
@@ -42,20 +42,20 @@ describe("detectUnicodeVariant", () => {
     ];
     variant.forEach((variantName) => {
       const unicodeString = toUnicodeVariant(testString, variantName as any);
-      const detectedVariant = detectUnicodeVariant(unicodeString);
+      const detectedVariant = detectUnicodeVariant(unicodeString.codePointAt(0)!);
       expect(detectedVariant).toBe(variantName);
     });
   });
 
   it("should return undefined for plain text", () => {
     const plainText = "Hello";
-    const detectedVariant = detectUnicodeVariant(plainText);
+    const detectedVariant = detectUnicodeVariant(plainText.codePointAt(0)!);
     expect(detectedVariant).toBeUndefined();
   });
 
   it("should return undefined for an empty string", () => {
     const emptyText = "";
-    const detectedVariant = detectUnicodeVariant(emptyText);
+    const detectedVariant = detectUnicodeVariant(emptyText.codePointAt(0)!);
     expect(detectedVariant).toBeUndefined();
   });
 });

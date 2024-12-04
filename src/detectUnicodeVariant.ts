@@ -6,14 +6,7 @@ function variantKeyToVariant(variantKey: string): Variant | undefined {
   return Object.entries(variantOffsets).find(([_, key]) => key === variantKey)?.[0] as Variant | undefined;
 }
 
-function detectUnicodeVariant(char: string): string | undefined {
-  if (char.trim().length === 0) {
-    return undefined;
-  }
-  const charCode = char.codePointAt(0);
-  if (charCode === undefined) {
-    return undefined;
-  }
+function detectUnicodeVariant(charCode: number): string | undefined {
   for (const [variantKey, [letterOffset, digitOffset]] of Object.entries(offsets)) {
     if (special[variantKey] !== undefined) {
       const found = Object.values(special[variantKey]).find((value) => {
