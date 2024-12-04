@@ -1,30 +1,5 @@
-const offsets = {
-  m: [0x1d670, 0x1d7f6],
-  b: [0x1d400, 0x1d7ce],
-  i: [0x1d434, 0x00030],
-  bi: [0x1d468, 0x00030],
-  c: [0x0001d49c, 0x00030],
-  bc: [0x1d4d0, 0x00030],
-  g: [0x1d504, 0x00030],
-  d: [0x1d538, 0x1d7d8],
-  bg: [0x1d56c, 0x00030],
-  s: [0x1d5a0, 0x1d7e2],
-  bs: [0x1d5d4, 0x1d7ec],
-  is: [0x1d608, 0x00030],
-  bis: [0x1d63c, 0x00030],
-  o: [0x24b6, 0x245f],
-  on: [0x0001f150, 0x245f],
-  p: [0x1f110, 0x1d7f6],
-  q: [0x1f130, 0x00030],
-  qn: [0x0001f170, 0x00030],
-  w: [0xff21, 0xff10],
-  //
-  f: [0x1f1e6, 0x1d7f6],
-  nd: [0x1d670, 0x2487],
-  nc: [0x1d670, 0x1f101],
-  ndc: [0x1d670, 0x24f4],
-  r: [0x1d670, 0x24f4],
-};
+export type Variant = keyof typeof variantOffsets;
+export type VariantKey = keyof typeof offsets;
 
 const variantOffsets = {
   monospace: "m",
@@ -52,7 +27,35 @@ const variantOffsets = {
   "numbers comma": "nc",
   "numbers double circled": "ndc",
   roman: "r",
-};
+} as const;
+
+const offsets = {
+  m: [0x1d670, 0x1d7f6],
+  b: [0x1d400, 0x1d7ce],
+  i: [0x1d434, 0x00030],
+  bi: [0x1d468, 0x00030],
+  c: [0x0001d49c, 0x00030],
+  bc: [0x1d4d0, 0x00030],
+  g: [0x1d504, 0x00030],
+  d: [0x1d538, 0x1d7d8],
+  bg: [0x1d56c, 0x00030],
+  s: [0x1d5a0, 0x1d7e2],
+  bs: [0x1d5d4, 0x1d7ec],
+  is: [0x1d608, 0x00030],
+  bis: [0x1d63c, 0x00030],
+  o: [0x24b6, 0x245f],
+  on: [0x0001f150, 0x245f],
+  p: [0x1f110, 0x1d7f6],
+  q: [0x1f130, 0x00030],
+  qn: [0x0001f170, 0x00030],
+  w: [0xff21, 0xff10],
+  //
+  f: [0x1f1e6, 0x1d7f6],
+  nd: [0x1d670, 0x2487],
+  nc: [0x1d670, 0x1f101],
+  ndc: [0x1d670, 0x24f4],
+  r: [0x1d670, 0x24f4],
+} as const;
 
 const special = {
   m: {
@@ -283,7 +286,7 @@ const special = {
     d: 0x217e,
     m: 0x217f,
   },
-};
+} as const;
 
 //paranthesis, support small letters
 //fullwidth, support small letters
@@ -372,9 +375,13 @@ const diacritics = {
   "space-ogham": { code: 0x1680 },
   //combining grapheme joiner
   CGJ: { code: 0x034f },
-};
+} as const;
 
-const special_chars = {
+type SpecialChars = {
+  [key: string]: { char: string; combine: string | boolean };
+}
+
+const special_chars: SpecialChars = {
   ä: { char: "a", combine: String.fromCodePoint(diacritics.diaeresis.code) },
   â: { char: "a", combine: String.fromCodePoint(diacritics.circumflex.code) },
   á: { char: "a", combine: String.fromCodePoint(diacritics.acute.code) },
@@ -674,7 +681,7 @@ const special_chars = {
       String.fromCodePoint(diacritics.horn.code) +
       String.fromCodePoint(diacritics.dotbelow.code),
   },
-};
+} as const;
 
 //reset special chars, capital letters
 //in the future, some capital speciel chars can be mimicked as well

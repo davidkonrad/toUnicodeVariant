@@ -13,34 +13,34 @@
  *
  */
 
-import { diacritics, offsets, special, special_chars, variantOffsets } from "./constant"
+import { diacritics, offsets, special, special_chars, Variant, VariantKey, variantOffsets } from "./constant"
 
-export function toUnicodeVariant(str: string, variant: string, combinings?: string) {
+export function toUnicodeVariant(str: string, variant: Variant | VariantKey, combinings?: string): string {
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 	const numbers = '0123456789'
 
-	const type = (function() {
-		if (variantOffsets[variant]) return variantOffsets[variant]
-		if (offsets[variant]) return variant
-		return 'm' //monospace as default
-	})()
+	const type: VariantKey =
+		variantOffsets[variant] !== undefined ?
+			variantOffsets[variant] :
+			offsets[variant] !== undefined ? variant : 'm'
 
-	const combine_with = (function() {
-		let array: string[] | null  = null
-		if (Array.isArray(combinings)) array = combinings
-		if (typeof combinings === 'string') array = combinings.split(',')
-		if (!array) return false
-		let result = ''
-		array.forEach(function(diacritic) {
-			diacritic = diacritic.trim().toLowerCase()
-			for (const d in diacritics) {
+	let array: string[] | undefined
+	if (Array.isArray(combinings)) {
+		array = combinings
+	}
+	if (typeof combinings === 'string') {
+		array = combinings.split(',')
+	}
+	const combine_with = array?.flatMap((diacritic) => {
+		diacritic = diacritic.trim().toLowerCase()
+			return Object.keys(diacritics).map((d) => {
 				if (diacritic === d || diacritic === diacritics[d].short) {
-					result += String.fromCodePoint(diacritics[d].code) //+ String.fromCodePoint(diacritics.CGJ.code) seem not to have any effect
+					return String.fromCodePoint(diacritics[d].code) //+ String.fromCodePoint(diacritics.CGJ.code) seem not to have any effect
+				} else {
+					return undefined
 				}
-			}
-		})
-		return result
-	})()
+			}).filter((d) => d !== undefined)
+	}).join('')
 
 	//if entire sequence is supported
 	if (typeof str === 'string' && special[type] && (special[type][str] || special[type][str.toLowerCase()])) {
@@ -86,10 +86,15 @@ export function toUnicodeVariant(str: string, variant: string, combinings?: stri
 		let index: number;
 		const combine_special = (c in special_chars) ? special_chars[c].combine : false
 		c = combine_special ? special_chars[c].char : c.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-		if (special[type] && special[type][c]) c = String.fromCodePoint(special[type][c])
-		if (type && (index = chars.indexOf(c)) > -1) {
+		if (special[type] && special[type][c]) {
+			// console.log("special", c, special[type][c])
+			c = String.fromCodePoint(special[type][c])
+			// console.log(c)
+		}
+		if ((index = chars.indexOf(c)) > -1) {
+			// console.log(c, index, String.fromCodePoint(index + offsets[type][0]), index + offsets[type][0])
 			result += String.fromCodePoint(index + offsets[type][0])
-		} else if (type && (index = numbers.indexOf(c)) > -1) {
+		} else if ((index = numbers.indexOf(c)) > -1) {
 			result += String.fromCodePoint(index + offsets[type][1])
 		} else {
 			result += c
